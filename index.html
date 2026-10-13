@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>"Agar men ..." — 10-sinf BSB-1 loyiha ishi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== YUQORI PANEL ===== -->
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">⚖️</span>
+    <span class="brand-text">"Agar men ..."</span>
+  </div>
+  <div class="topbar-actions">
+    <button id="btnHome" class="icon-btn" title="Bosh sahifa">🏠</button>
+    <button id="btnGames" class="icon-btn" title="O'yinlar">🎮</button>
+    <button id="btnFullscreen" class="icon-btn" title="To'liq ekran">⛶</button>
+  </div>
+</header>
+
+<!-- ===== PROGRESS ===== -->
+<div class="progress-wrap">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- ===== SLAYD KONTEYNERI ===== -->
+<main id="slideContainer" class="slide-container">
+
+  <!-- SLAYD 1: BOSH SAHIFA -->
+  <section class="slide active" data-slide="1">
+    <div class="hero">
+      <h1 class="hero-title">"Agar men ..."</h1>
+      <p class="hero-subtitle">10-sinf BSB-1 loyiha ishi</p>
+      <div class="hero-subjects">
+        <span class="chip">Tarbiya</span>
+        <span class="chip">Davlat va huquq asoslari</span>
+      </div>
+      <p class="hero-question">
+        Agar men kelajakda <b>mahalla yoshlar yetakchisi</b>, <b>mahalla raisi</b>,
+        <b>hokim</b> yoki <b>vazir</b> bo'lganimda, jamiyatdagi qanday muammoni hal qilgan bo'lardim?
+      </p>
+      <button class="btn-primary" id="btnStart">Boshlash →</button>
+    </div>
+  </section>
+
+  <!-- SLAYD 2: LOYIHA MAQSADI -->
+  <section class="slide" data-slide="2">
+    <h2 class="slide-title">Loyiha maqsadi</h2>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-icon">🤝</div><h3>Jamiyatga daxldorlik</h3><p>Har bir fuqaro o'z mahallasidagi muammolarga befarq bo'lmasligi.</p></div>
+      <div class="card"><div class="card-icon">🛡️</div><h3>Fuqarolik burchi</h3><p>Jamiyat oldidagi mas'uliyatni his qilish va bajarish.</p></div>
+      <div class="card"><div class="card-icon">⚖️</div><h3>Adolat</h3><p>Qarorlar qabul qilishda qonuniylik va adolatni ustuvor qo'yish.</p></div>
+      <div class="card"><div class="card-icon">💡</div><h3>Tashabbuskorlik</h3><p>Muammolarni hal qilishda faol bo'lish.</p></div>
+      <div class="card"><div class="card-icon">👥</div><h3>Hamkorlik</h3><p>Jamoa bilan birgalikda ishlash.</p></div>
+      <div class="card"><div class="card-icon">🎯</div><h3>Mas'uliyat</h3><p>O'z qarorlari va harakatlari uchun javob berish.</p></div>
+    </div>
+  </section>
+
+  <!-- SLAYD 3: MUAMMONI TANLASH -->
+  <section class="slide" data-slide="3">
+    <h2 class="slide-title">Muammoni tanlash</h2>
+    <p class="slide-lead">Quyidagi muammolardan birini tanlash mumkin. Har bir muammo jamiyatga ta'sir qiladi:</p>
+    <div class="grid grid-2">
+      <div class="problem-card"><span class="pc-num">01</span><h3>Yoshlarning bo'sh vaqtini mazmunli tashkil etish</h3></div>
+      <div class="problem-card"><span class="pc-num">02</span><h3>Ekologik madaniyat</h3></div>
+      <div class="problem-card"><span class="pc-num">03</span><h3>Jamoat joylarida tartib</h3></div>
+      <div class="problem-card"><span class="pc-num">04</span><h3>Huquqiy savodxonlik</h3></div>
+      <div class="problem-card"><span class="pc-num">05</span><h3>Yoshlar ishtiroki</h3></div>
+      <div class="problem-card"><span class="pc-num">06</span><h3>Imkoniyati cheklangan shaxslar uchun qulay muhit</h3></div>
+      <div class="problem-card"><span class="pc-num">07</span><h3>Jamoat mulkini asrash</h3></div>
+    </div>
+    <p class="note">📌 Ushbu loyihada asosiy muammo sifatida <b>"Yoshlarning bo'sh vaqtini mazmunli tashkil etish"</b> tanlangan.</p>
+  </section>
+
+  <!-- SLAYD 4: MEN TANLAGAN ROL -->
+  <section class="slide" data-slide="4">
+    <h2 class="slide-title">Men tanlagan rol</h2>
+    <div class="grid grid-2">
+      <div class="role-card">
+        <div class="role-head"><span class="role-icon">🧑‍🤝‍🧑</span><h3>Mahalla yoshlar yetakchisi</h3></div>
+        <ul>
+          <li>Yoshlar bilan ishlashni tashkil etadi</li>
+          <li>Yoshlar tashabbuslarini qo'llab-quvvatlaydi</li>
+          <li>Mahalla raisi bilan hamkorlik qiladi</li>
+          <li>Yoshlar muammolarini o'rganadi va yechim taklif qiladi</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-head"><span class="role-icon">🏛️</span><h3>Mahalla raisi</h3></div>
+        <ul>
+          <li>Mahalla hududidagi ijtimoiy masalalarni hal qiladi</li>
+          <li>Mahalla byudjetini rejalashtiradi</li>
+          <li>Jamoat tartibini ta'minlashda ishtirok etadi</li>
+          <li>Fuqarolar murojaatlarini ko'rib chiqadi</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-head"><span class="role-icon">🏢</span><h3>Hokim</h3></div>
+        <ul>
+          <li>Tuman/shahar ijtimoiy-iqtisodiy rivojlanishini boshqaradi</li>
+          <li>Mahalliy byudjetni tasdiqlaydi</li>
+          <li>Qonunlar va Prezident farmonlarini ijro etadi</li>
+          <li>Yoshlar siyosatini amalga oshiradi</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-head"><span class="role-icon">🎖️</span><h3>Vazir</h3></div>
+        <ul>
+          <li>Milliy siyosatni ishlab chiqadi</li>
+          <li>Vazirlik faoliyatini boshqaradi</li>
+          <li>Qonun loyihalarini tayyorlaydi</li>
+          <li>Respublika miqyosida dasturlarni amalga oshiradi</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">📌 Ushbu loyihada <b>"Mahalla yoshlar yetakchisi"</b> roli tanlangan.</p>
+  </section>
+
+  <!-- SLAYD 5: MUAMMONING TA'SIRI -->
+  <section class="slide" data-slide="5">
+    <h2 class="slide-title">Muammoning ta'siri</h2>
+    <div class="impact-grid">
+      <div class="impact-box">
+        <h3>👥 Kimlarga ta'sir qiladi?</h3>
+        <ul>
+          <li>Mahalladagi 14–30 yoshdagi yoshlar</li>
+          <li>Yoshlarning ota-onalari va oilalari</li>
+          <li>Mahalla faollari va rahbarlari</li>
+          <li>Ta'lim muassasalari</li>
+          <li>Butun jamiyat</li>
+        </ul>
+      </div>
+      <div class="impact-box">
+        <h3>⚠️ Ijtimoiy oqibatlar</h3>
+        <ul>
+          <li>Yoshlarning turli yomon odatlarga berilishi</li>
+          <li>Huquqbuzarliklar sonining ortishi</li>
+          <li>Ta'lim va kasbga qiziqishning pasayishi</li>
+          <li>Ijtimoiy faollikning sustlashishi</li>
+          <li>Oilaviy muammolarning ko'payishi</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">📌 Statistik ma'lumotlar uchun: <i>mahalliy hokimlik yoki statistika qo'mitasi ma'lumotlari kiritilsin.</i></p>
+  </section>
+
+  <!-- SLAYD 6: HUQUQ, BURCH VA JAVOBGARLIK -->
+  <section class="slide" data-slide="6">
+    <h2 class="slide-title">Huquq, burch va javobgarlik</h2>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-icon">📜</div><h3>Huquq</h3><p>O'zbekiston Respublikasi Konstitutsiyasi va qonunlari bilan kafolatlangan imkoniyatlar.</p></div>
+      <div class="card"><div class="card-icon">🤲</div><h3>Burch</h3><p>Konstitutsiya va qonunlarda belgilangan majburiyatlar. Yoshlar tarbiyasi — umumiy burch.</p></div>
+      <div class="card"><div class="card-icon">⚖️</div><h3>Javobgarlik</h3><p>Qonun oldida va jamiyat oldida o'z harakatlari uchun mas'ul bo'lish.</p></div>
+    </div>
+    <div class="law-box">
+      <h3>📚 Huquqiy asoslar (qonun moddalari kiritilsin)</h3>
+      <ul>
+        <li>O'zbekiston Respublikasi Konstitutsiyasi — tegishli moddalar</li>
+        <li>"Yoshlarga oid davlat siyosati to'g'risida"gi Qonun</li>
+        <li>"Mahalla instituti to'g'risida"gi qonun hujjatlari</li>
+        <li>Boshqa normativ-huquqiy hujjatlar</li>
+      </ul>
+      <p class="note">📌 Aniq modda raqamlari PDF manba asosida kiritilsin.</p>
+    </div>
+  </section>
+
+  <!-- SLAYD 7: DALILLAR VA TADQIQOT -->
+  <section class="slide" data-slide="7">
+    <h2 class="slide-title">Dalillar va tadqiqot</h2>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-icon">🔍</div><h3>Kuzatuv</h3><p>Mahalladagi yoshlar bo'sh vaqtini qanday o'tkazishini kuzatish.</p></div>
+      <div class="card"><div class="card-icon">📊</div><h3>So'rov</h3><p>Yoshlar o'rtasida so'rovnoma o'tkazish.</p></div>
+      <div class="card"><div class="card-icon">🎤</div><h3>Intervyu</h3><p>Mahalla raisi, yoshlar yetakchisi va faollar bilan suhbat.</p></div>
+    </div>
+    <div class="source-box">
+      <h3>🔗 Ishonchli manbalar</h3>
+      <ul>
+        <li>lex.uz — O'zbekiston Respublikasi qonun hujjatlari milliy bazasi</li>
+        <li>stat.uz — Statistika qo'mitasi rasmiy sayti</li>
+        <li>gov.uz — Davlat portali</li>
+        <li>Mahalliy hokimlik rasmiy ma'lumotlari</li>
+      </ul>
+      <p class="note">📌 Aniq statistik ma'lumotlar PDF manbada mavjud bo'lsa kiritilsin.</p>
+    </div>
+  </section>
+
+  <!-- SLAYD 8: HUQUQIY VA IJTIMOIY TAHLIL -->
+  <section class="slide" data-slide="8">
+    <h2 class="slide-title">Huquqiy va ijtimoiy tahlil</h2>
+    <div class="grid grid-2">
+      <div class="analysis-box">
+        <h3>🔎 Sabablar</h3>
+        <ul>
+          <li>Yoshlar uchun bo'sh vaqtni mazmunli o'tkazish maskanlarining yetishmasligi</li>
+          <li>Huquqiy savodxonlikning pastligi</li>
+          <li>Ish va kasb tanlash imkoniyatlarining cheklanganligi</li>
+          <li>Tashabbuslarni qo'llab-quvvatlashning sustligi</li>
+        </ul>
+      </div>
+      <div class="analysis-box">
+        <h3>📉 Oqibatlar</h3>
+        <ul>
+          <li>Yoshlarning turli xavfli guruhlarga qo'shilishi</li>
+          <li>Huquqbuzarliklar</li>
+          <li>Ta'limdan uzoqlashish</li>
+          <li>Jamiyatga bo'lgan ishonchsizlik</li>
+        </ul>
+      </div>
+      <div class="analysis-box">
+        <h3>👤 Turli insonlar manfaatlari</h3>
+        <ul>
+          <li>Yoshlar — o'zini rivojlantirish</li>
+          <li>Ota-onalar — farzandlari xavfsizligi</li>
+          <li>Mahalla — tartib va osoyishtalik</li>
+          <li>Davlat — barqarorlik va taraqqiyot</li>
+        </ul>
+      </div>
+      <div class="analysis-box">
+        <h3>🌍 Jamoat manfaati</h3>
+        <p>Yoshlar bandligi va tarbiyasi butun jamiyatning barqaror rivojlanishiga xizmat qiladi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 9: UCHTA YECHIM -->
+  <section class="slide" data-slide="9">
+    <h2 class="slide-title">Uchta yechim</h2>
+    <div class="grid grid-3">
+      <div class="solution-card">
+        <div class="sol-num">1</div>
+        <h3>Yoshlar markazi tashkil etish</h3>
+        <p>Mahallada bepul yoshlar markazi ochish: kutubxona, sport zali, IT xonasi.</p>
+      </div>
+      <div class="solution-card">
+        <div class="sol-num">2</div>
+        <h3>Huquqiy ta'lim dasturi</h3>
+        <p>Yoshlar uchun huquqiy savodxonlik bo'yicha doimiy o'quv kurslari.</p>
+      </div>
+      <div class="solution-card">
+        <div class="sol-num">3</div>
+        <h3>Yoshlar tashabbuslari granti</h3>
+        <p>Kichik loyihalar uchun mahalliy grant va tanlovlar tashkil etish.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 10: YECHIMLARNI TAQQOSLASH -->
+  <section class="slide" data-slide="10">
+    <h2 class="slide-title">Yechimlarni taqqoslash</h2>
+    <div class="table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Mezon</th>
+            <th>1-yechim</th>
+            <th>2-yechim</th>
+            <th>3-yechim</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Qonuniylik</td><td>✅ Yuqori</td><td>✅ Yuqori</td><td>✅ Yuqori</td></tr>
+          <tr><td>Adolat</td><td>✅ Barchaga teng</td><td>✅ Barchaga teng</td><td>⚠️ Tanlov asosida</td></tr>
+          <tr><td>Jamoat manfaati</td><td>✅ Katta</td><td>✅ Katta</td><td>✅ O'rtacha</td></tr>
+          <tr><td>Xarajatlar</td><td>💰 Yuqori</td><td>💰 Past</td><td>💰 O'rtacha</td></tr>
+          <tr><td>Amalga oshirish</td><td>⏳ Uzoq muddat</td><td>⚡ Tez</td><td>⏳ O'rtacha</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SLAYD 11: ENG MAQBUL YECHIM -->
+  <section class="slide" data-slide="11">
+    <h2 class="slide-title">Eng maqbul yechim</h2>
+    <div class="best-solution">
+      <div class="best-badge">⭐ Tanlangan yechim</div>
+      <h3>Yoshlar markazi tashkil etish + Huquqiy ta'lim dasturi</h3>
+      <p>Bu ikki yechim birgalikda yoshlarning bo'sh vaqtini mazmunli o'tkazish va huquqiy savodxonligini oshirishga xizmat qiladi.</p>
+      <div class="grid grid-2">
+        <div class="result-box">
+          <h4>🎯 Kutiladigan natijalar</h4>
+          <ul>
+            <li>Yoshlar bandligining oshishi</li>
+            <li>Huquqbuzarliklarning kamayishi</li>
+            <li>Yoshlar tashabbuslarining ko'payishi</li>
+            <li>Mahallada ijtimoiy muhitning yaxshilanishi</li>
+          </ul>
+        </div>
+        <div class="result-box">
+          <h4>⚖️ Asoslar</h4>
+          <ul>
+            <li>Qonuniy — davlat yoshlar siyosatiga mos</li>
+            <li>Adolatli — barcha yoshlar uchun teng</li>
+            <li>Samarali — uzoq muddatli natija</li>
+            <li>Jamoat manfaatiga xizmat qiladi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 12: HARAKAT REJASI -->
+  <section class="slide" data-slide="12">
+    <h2 class="slide-title">Harakat rejasi</h2>
+    <div class="table-wrap">
+      <table class="plan-table">
+        <thead>
+          <tr><th>#</th><th>Vazifa</th><th>Mas'ul</th><th>Muddat</th><th>Resurslar</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Yoshlar so'rovini o'tkazish</td><td>Yoshlar yetakchisi</td><td>1-hafta</td><td>Anketa, qalam</td></tr>
+          <tr><td>2</td><td>Mahalla raisi bilan uchrashuv</td><td>Loyiha jamoasi</td><td>2-hafta</td><td>Xona, hujjatlar</td></tr>
+          <tr><td>3</td><td>Yoshlar markazi loyihasini tayyorlash</td><td>Jamoa</td><td>3-hafta</td><td>Kompyuter</td></tr>
+          <tr><td>4</td><td>Huquqiy ta'lim dasturini ishlab chiqish</td><td>Huquq o'qituvchisi</td><td>4-hafta</td><td>Manbalar</td></tr>
+          <tr><td>5</td><td>Ta'qdimot va himoya</td><td>Barcha a'zolar</td><td>5-hafta</td><td>Prezentatsiya</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SLAYD 13: JAMOADA ISHLASH -->
+  <section class="slide" data-slide="13">
+    <h2 class="slide-title">Jamoada ishlash</h2>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-icon">🧑‍💼</div><h3>Loyiha rahbari</h3><p>Vazifalarni taqsimlaydi, muddatlarni nazorat qiladi.</p></div>
+      <div class="card"><div class="card-icon">🔍</div><h3>Tadqiqotchi</h3><p>Ma'lumot yig'adi, so'rov va intervyu o'tkazadi.</p></div>
+      <div class="card"><div class="card-icon">⚖️</div><h3>Huquqshunos</h3><p>Qonuniy jihatlarni o'rganadi va tahlil qiladi.</p></div>
+      <div class="card"><div class="card-icon">🎨</div><h3>Dizayner</h3><p>Taqdimot va vizual materiallarni tayyorlaydi.</p></div>
+      <div class="card"><div class="card-icon">🗣️</div><h3>Notiq</h3><p>Loyihani himoya qiladi va taqdim etadi.</p></div>
+      <div class="card"><div class="card-icon">📝</div><h3>Kotib</h3><p>Yig'ilish bayonlarini yuritadi.</p></div>
+    </div>
+  </section>
+
+  <!-- SLAYD 14: INDIVIDUAL REFLEKSIYA -->
+  <section class="slide" data-slide="14">
+    <h2 class="slide-title">Individual refleksiya</h2>
+    <p class="slide-lead">Quyidagi savollarga o'z javoblaringizni yozing. Javoblar faqat sizning brauzeringizda saqlanadi.</p>
+    <form id="reflectionForm" class="reflection-form">
+      <div class="reflect-item">
+        <label>1. Loyihada men shaxsan qanday vazifalarni bajardim?</label>
+        <textarea data-key="r1" rows="3"></textarea>
+      </div>
+      <div class="reflect-item">
+        <label>2. Qaysi huquqiy talab, qoida yoki cheklovni aniqladim?</label>
+        <textarea data-key="r2" rows="3"></textarea>
+      </div>
+      <div class="reflect-item">
+        <label>3. Jamoada qanday mas'uliyat, tashabbus yoki hamkorlik ko'rsatdim?</label>
+        <textarea data-key="r3" rows="3"></textarea>
+      </div>
+      <div class="reflect-item">
+        <label>4. To'plangan dalillar mening fikrimni qanday o'zgartirdi?</label>
+        <textarea data-key="r4" rows="3"></textarea>
+      </div>
+      <div class="reflect-item">
+        <label>5. Kelajakda ushbu muammo bo'yicha amalga oshira oladigan bitta real fuqarolik harakatim nima?</label>
+        <textarea data-key="r5" rows="3"></textarea>
+      </div>
+      <div class="reflect-item">
+        <label>6. Loyihani qayta bajarsam, qaysi faoliyatimni yaxshilagan bo'lardim?</label>
+        <textarea data-key="r6" rows="3"></textarea>
+      </div>
+      <div class="reflect-actions">
+        <button type="button" class="btn-secondary" id="btnClearReflect">🧹 Tozalash</button>
+        <button type="button" class="btn-primary" id="btnDownloadReflect">⬇️ Yuklab olish (.txt)</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- SLAYD 15: YAKUNIY XULOSA -->
+  <section class="slide" data-slide="15">
+    <h2 class="slide-title">Yakuniy xulosa</h2>
+    <div class="conclusion">
+      <p class="big-quote">"Agar men ..." — bu shunchaki savol emas, balki har bir yoshning jamiyat oldidagi mas'uliyatini anglashidir.</p>
+      <div class="grid grid-3">
+        <div class="card"><div class="card-icon">🛡️</div><h3>Fuqarolik mas'uliyati</h3><p>Har bir fuqaro o'z jamiyati taraqqiyoti uchun mas'uldir.</p></div>
+        <div class="card"><div class="card-icon">📈</div><h3>Jamiyat taraqqiyoti</h3><p>Yoshlar tashabbusi — jamiyat rivojining asosi.</p></div>
+        <div class="card"><div class="card-icon">🚀</div><h3>Real harakat</h3><p>Bugun boshlangan kichik tashabbus ertaga katta natija beradi.</p></div>
+      </div>
+      <p class="final-note">Created By: <a href="https://github.com/ttnaceri">UPDATE Inc.</a></p>
+    </div>
+  </section>
+
+  <!-- SLAYD 16: O'YINLAR BO'LIMI -->
+  <section class="slide" data-slide="16">
+    <h2 class="slide-title">🎮 Interaktiv o'yinlar</h2>
+    <div class="games-tabs">
+      <button class="tab-btn active" data-tab="tab-cards">A. Kartochkalar</button>
+      <button class="tab-btn" data-tab="tab-quiz">B. Test</button>
+      <button class="tab-btn" data-tab="tab-scenario">C. Vaziyat</button>
+      <button class="tab-btn" data-tab="tab-match">D. Juftlik</button>
+      <button class="tab-btn" data-tab="tab-order">E. Tartiblash</button>
+    </div>
+
+    <!-- A. KARTOCHKALAR -->
+    <div class="tab-content active" id="tab-cards">
+      <p class="tab-hint">Kartochkani bosing — javob ko'rinadi. Qayta bosing — savolga qaytadi.</p>
+      <div class="flip-grid">
+        <div class="flip-card" data-answer="Huquq — bu qonun bilan himoyalangan imkoniyat. Masalan, ta'lim olish, mehnat qilish, so'z erkinligi.">
+          <div class="flip-inner">
+            <div class="flip-front">Huquq nima?</div>
+            <div class="flip-back">Huquq — qonun bilan himoyalangan imkoniyat.</div>
+          </div>
+        </div>
+        <div class="flip-card" data-answer="Fuqarolik burchi — jamiyat va davlat oldidagi majburiyatlarni bajarish.">
+          <div class="flip-inner">
+            <div class="flip-front">Fuqarolik burchi nima?</div>
+            <div class="flip-back">Jamiyat va davlat oldidagi majburiyatlarni bajarish.</div>
+          </div>
+        </div>
+        <div class="flip-card" data-answer="Mahalla yoshlar yetakchisi — yoshlar bilan ishlashni tashkil etadi, tashabbuslarni qo'llab-quvvatlaydi.">
+          <div class="flip-inner">
+            <div class="flip-front">Mahalla yoshlar yetakchisining vazifasi nima?</div>
+            <div class="flip-back">Yoshlar bilan ishlashni tashkil etish va tashabbuslarni qo'llab-quvvatlash.</div>
+          </div>
+        </div>
+        <div class="flip-card" data-answer="Jamoat mulki — barchaga tegishli bo'lgan mulk. Uni asrash har bir fuqaroning burchi.">
+          <div class="flip-inner">
+            <div class="flip-front">Jamoat mulkini asrash nima uchun muhim?</div>
+            <div class="flip-back">Chunki u barchaga tegishli va har bir fuqaroning burchidir.</div>
+          </div>
+        </div>
+        <div class="flip-card" data-answer="Muammoni hal qilish uchun kuzatuv, so'rov, intervyu va ishonchli manbalar kerak.">
+          <div class="flip-inner">
+            <div class="flip-front">Muammoni hal qilish uchun qanday dalillar kerak?</div>
+            <div class="flip-back">Kuzatuv, so'rov, intervyu va ishonchli manbalar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B. TEST -->
+    <div class="tab-content" id="tab-quiz">
+      <p class="tab-hint">Har bir savolga javob tanlang. Natija oxirida ko'rsatiladi.</p>
+      <div id="quizContainer"></div>
+      <div class="quiz-actions">
+        <button class="btn-primary" id="btnQuizSubmit">✅ Javoblarni tekshirish</button>
+        <button class="btn-secondary" id="btnQuizRetry">🔄 Qayta urinish</button>
+      </div>
+      <div id="quizResult" class="quiz-result"></div>
+    </div>
+
+    <!-- C. VAZIYAT -->
+    <div class="tab-content" id="tab-scenario">
+      <p class="tab-hint">Siz mahalla yoshlar yetakchisisiz. Muammo: yoshlarning bo'sh vaqtini mazmunli tashkil etish. Qaysi yechimni tanlaysiz?</p>
+      <div id="scenarioBox"></div>
+      <div id="scenarioResult" class="scenario-result"></div>
+      <button class="btn-secondary" id="btnScenarioReset">🔄 Qaytadan</button>
+    </div>
+
+    <!-- D. JUFTLIK -->
+    <div class="tab-content" id="tab-match">
+      <p class="tab-hint">Tushunchani to'g'ri ta'rif bilan moslashtiring.</p>
+      <div class="match-wrap">
+        <div class="match-col" id="matchLeft"></div>
+        <div class="match-col" id="matchRight"></div>
+      </div>
+      <button class="btn-primary" id="btnMatchCheck">✅ Tekshirish</button>
+      <button class="btn-secondary" id="btnMatchReset">🔄 Qayta</button>
+      <div id="matchResult" class="match-result"></div>
+    </div>
+
+    <!-- E. TARTIBLASH -->
+    <div class="tab-content" id="tab-order">
+      <p class="tab-hint">Loyiha bosqichlarini to'g'ri tartibga joylashtiring (yuqoridan pastga).</p>
+      <ul class="order-list" id="orderList"></ul>
+      <button class="btn-primary" id="btnOrderCheck">✅ Tekshirish</button>
+      <button class="btn-secondary" id="btnOrderReset">🔄 Qayta</button>
+      <div id="orderResult" class="order-result"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== PASTKI PANEL ===== -->
+<footer class="bottombar">
+  <button class="nav-btn" id="btnPrev">← Oldingi</button>
+  <span class="slide-counter" id="slideCounter">1 / 16</span>
+  <button class="nav-btn" id="btnNext">Keyingi →</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
