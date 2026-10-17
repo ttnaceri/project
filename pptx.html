@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>"Burch va Mas'uliyat" — Web-Prezentatsiya</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===== YUQORI PANEL ===== -->
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">🌷</span>
+    <span class="brand-text">Burch va Mas'uliyat</span>
+  </div>
+  <div class="topbar-actions">
+    <button id="btnHome" class="icon-btn" title="Bosh sahifa">🏠</button>
+    <button id="btnGames" class="icon-btn" title="O'yinlar">🎮</button>
+    <button id="btnFullscreen" class="icon-btn" title="To'liq ekran">⛶</button>
+  </div>
+</header>
+
+<!-- ===== PROGRESS ===== -->
+<div class="progress-wrap">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<!-- ===== SLAYDLAR ===== -->
+<main class="slide-container">
+
+  <!-- SLAYD 1: BOSH SAHIFA -->
+  <section class="slide active" data-slide="1">
+    <div class="hero">
+      <div class="hero-flowers">🌷 🌸 🌺 🌷 🌸</div>
+      <h1 class="hero-title">Burch va Mas'uliyat</h1>
+      <p class="hero-subtitle">Interaktiv web-prezentatsiya</p>
+      <div class="creators-box">
+        <p class="creators-label">✨ Yaratuvchilar ✨</p>
+        <div class="creators-list">
+          <span class="creator-chip">Axmedova E'zoza</span>
+          <span class="creator-chip">Murtazayeva Mahliyo</span>
+          <span class="creator-chip">Qarshiboyeva Odina</span>
+          <span class="creator-chip">Jumanova Zilola</span>
+        </div>
+      </div>
+      <button class="btn-primary" id="btnStart">Boshlash 🌷</button>
+    </div>
+  </section>
+
+  <!-- SLAYD 2: MAVZU HAQIDA -->
+  <section class="slide" data-slide="2">
+    <h2 class="slide-title">Mavzu haqida</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="card-icon">🌸</div>
+        <h3>Burch nima?</h3>
+        <p>Burch — bu insonning o'z oilasi, jamiyati va davlati oldidagi bajarishi lozim bo'lgan majburiyatlari. Har bir inson o'z burchini bajarish orqali jamiyatga hissa qo'shadi.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌷</div>
+        <h3>Mas'uliyat nima?</h3>
+        <p>Mas'uliyat — bu o'z harakatlari, qarorlari va ularning oqibatlari uchun javob berish. Mas'uliyatli inson o'z so'zi va ishiga sodiq bo'ladi.</p>
+      </div>
+    </div>
+    <div class="quote-box">
+      <p class="quote">💐 "Burch va mas'uliyat — har bir insonning hayotida muhim o'rin tutadi."</p>
+    </div>
+  </section>
+
+  <!-- SLAYD 3: BURCH TURLARI -->
+  <section class="slide" data-slide="3">
+    <h2 class="slide-title">Burch turlari</h2>
+    <p class="slide-lead">Har bir inson hayotida turli burchlarni bajaradi:</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon">👨‍👩‍👧</div>
+        <h3>Oilaviy burch</h3>
+        <p>Ota-onani hurmat qilish, oilaga g'amxo'rlik qilish, uy ishlarida yordam berish.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3>Ta'lim burchi</h3>
+        <p>Darslarni o'z vaqtida bajarish, ustozlarga hurmat, bilim olishga intilish.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <h3>Fuqarolik burchi</h3>
+        <p>Qonunlarga rioya qilish, Vatanimizni himoya qilish, soliq to'lash.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">👭</div>
+        <h3>Do'stlik burchi</h3>
+        <p>Do'stlarga sodiq bo'lish, qiyin paytda yordam berish.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌿</div>
+        <h3>Tabiat oldidagi burch</h3>
+        <p>Atrof-muhitni asrash, tabiatga mehr bilan munosabatda bo'lish.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <h3>O'z oldidagi burch</h3>
+        <p>O'z salomatligi, rivojlanishi va maqsadlariga erishish uchun harakat qilish.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 4: MAS'ULIYAT TURLARI -->
+  <section class="slide" data-slide="4">
+    <h2 class="slide-title">Mas'uliyat turlari</h2>
+    <div class="grid grid-2">
+      <div class="resp-card">
+        <div class="resp-num">01</div>
+        <h3>Shaxsiy mas'uliyat</h3>
+        <p>O'z harakatlari, so'zlari va qarorlari uchun javob berish.</p>
+      </div>
+      <div class="resp-card">
+        <div class="resp-num">02</div>
+        <h3>Ijtimoiy mas'uliyat</h3>
+        <p>Jamiyat oldidagi majburiyatlarni bajarish, boshqalarga yordam berish.</p>
+      </div>
+      <div class="resp-card">
+        <div class="resp-num">03</div>
+        <h3>Huquqiy mas'uliyat</h3>
+        <p>Qonunlarga rioya qilish va qonun oldida javob berish.</p>
+      </div>
+      <div class="resp-card">
+        <div class="resp-num">04</div>
+        <h3>Axloqiy mas'uliyat</h3>
+        <p>Vijdon oldida javob berish, yaxshi va yomonni farqlash.</p>
+      </div>
+      <div class="resp-card">
+        <div class="resp-num">05</div>
+        <h3>Oilaviy mas'uliyat</h3>
+        <p>Oila a'zolari oldidagi majburiyatlarni bajarish.</p>
+      </div>
+      <div class="resp-card">
+        <div class="resp-num">06</div>
+        <h3>Kasbiy mas'uliyat</h3>
+        <p>Kelajakdagi kasbini vijdonan bajarish.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 5: HAYOTIY MISOLLAR -->
+  <section class="slide" data-slide="5">
+    <h2 class="slide-title">Hayotiy misollar</h2>
+    <div class="grid grid-2">
+      <div class="example-card">
+        <div class="ex-icon">🏫</div>
+        <h3>Maktabda</h3>
+        <ul>
+          <li>Darsga o'z vaqtida kelish</li>
+          <li>Uy vazifasini bajarish</li>
+          <li>Ustozlarni hurmat qilish</li>
+          <li>Sinfdoshlarga yordam berish</li>
+          <li>Maktab mulkini asrash</li>
+        </ul>
+      </div>
+      <div class="example-card">
+        <div class="ex-icon">🏡</div>
+        <h3>Uyda</h3>
+        <ul>
+          <li>Ota-onaga yordam berish</li>
+          <li>Ukasi va opalariga g'amxo'rlik</li>
+          <li>Uy ishlarida qatnashish</li>
+          <li>Oila an'analarini hurmat qilish</li>
+          <li>Uy hayvonlarini boqish</li>
+        </ul>
+      </div>
+      <div class="example-card">
+        <div class="ex-icon">🛣️</div>
+        <h3>Jamoat joylarida</h3>
+        <ul>
+          <li>Yo'l harakati qoidalariga rioya qilish</li>
+          <li>Navbatda turish</li>
+          <li>Kattalarni hurmat qilish</li>
+          <li>Jamoat mulkini asrash</li>
+          <li>Atrofni toza saqlash</li>
+        </ul>
+      </div>
+      <div class="example-card">
+        <div class="ex-icon">🌐</div>
+        <h3>Internetda</h3>
+        <ul>
+          <li>Halol va to'g'ri ma'lumot tarqatish</li>
+          <li>Boshqalarni haqorat qilmaslik</li>
+          <li>Shaxsiy ma'lumotlarni himoya qilish</li>
+          <li>Vaqtni to'g'ri taqsimlash</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 6: O'YIN 1 — FLIP KARTOCHKALAR -->
+  <section class="slide" data-slide="6">
+    <h2 class="slide-title">🎮 O'yin 1: Kartochkalarni oching</h2>
+    <p class="slide-lead">Savol yozilgan kartochkani bosing — javob ko'rinadi. Qayta bosing — savolga qaytadi.</p>
+    <div class="flip-grid">
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">🌸 Burch nima?</div>
+          <div class="flip-back">Insonning o'z oilasi, jamiyati va davlati oldidagi majburiyatlari.</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">🌷 Mas'uliyat nima?</div>
+          <div class="flip-back">O'z harakatlari va qarorlari uchun javob berish.</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">📚 Ta'lim burchi nima?</div>
+          <div class="flip-back">Darslarni o'z vaqtida bajarish, ustozlarni hurmat qilish.</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">👨‍👩‍👧 Oilaviy burch nima?</div>
+          <div class="flip-back">Ota-onani hurmat qilish, oilaga g'amxo'rlik qilish.</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">🏛️ Fuqarolik burchi nima?</div>
+          <div class="flip-back">Qonunlarga rioya qilish, Vatanni himoya qilish.</div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">🌟 Mas'uliyatli inson qanday bo'ladi?</div>
+          <div class="flip-back">So'zida turadi, harakatlari uchun javob beradi, ishonchli bo'ladi.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLAYD 7: O'YIN 2 — TEST -->
+  <section class="slide" data-slide="7">
+    <h2 class="slide-title">🎯 O'yin 2: Bilimingizni sinang</h2>
+    <p class="slide-lead">Har bir savolga bitta to'g'ri javob tanlang. Natija oxirida ko'rsatiladi.</p>
+    <div id="quizContainer"></div>
+    <div class="quiz-actions">
+      <button class="btn-primary" id="btnQuizSubmit">✅ Javoblarni tekshirish</button>
+      <button class="btn-secondary" id="btnQuizRetry">🔄 Qayta urinish</button>
+    </div>
+    <div id="quizResult" class="quiz-result"></div>
+  </section>
+
+  <!-- SLAYD 8: YAKUNIY XULOSA -->
+  <section class="slide" data-slide="8">
+    <h2 class="slide-title">Yakuniy xulosa</h2>
+    <div class="conclusion">
+      <div class="hero-flowers">🌷 🌸 🌺 🌷 🌸</div>
+      <p class="big-quote">
+        "Burch va mas'uliyat — bu har bir insonning qalbida yashovchi nurdir.
+        U bizni yaxshi inson bo'lishga, jamiyatga foyda keltirishga undaydi."
+      </p>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">💖</div>
+          <h3>Mehr bilan</h3>
+          <p>Burch va mas'uliyatni mehr bilan bajarish kerak.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌟</div>
+          <h3>Halol bo'lish</h3>
+          <p>Har bir ishni halol va vijdonan bajarish.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🌸</div>
+          <h3>Namuna bo'lish</h3>
+          <p>O'z burchini bajarish bilan boshqalarga namuna bo'lish.</p>
+        </div>
+      </div>
+      <div class="creators-final">
+        <p class="final-label">✨ Yaratuvchilar ✨</p>
+        <div class="creators-list">
+          <span class="creator-chip">Axmedova E'zoza,</span>
+          <span class="creator-chip">Murtazayeva Mahliyo,</span>
+          <span class="creator-chip">Qarshiboyeva Odina va</span>
+          <span class="creator-chip">Jumanova Zilola</span>
+        </div>
+        <p class="thanks">💐 E'tiboringiz uchun rahmat! 💐</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== PASTKI PANEL ===== -->
+<footer class="bottombar">
+  <button class="nav-btn" id="btnPrev">← Oldingi</button>
+  <span class="slide-counter" id="slideCounter">1 / 8</span>
+  <button class="nav-btn" id="btnNext">Keyingi →</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
