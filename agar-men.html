@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agar Men ... | Kelajak Loyihasi</title>
+<style>
+/* ===== RESET & ASOS ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0f172a;
+  --ink2:#1e293b;
+  --teal:#0d9488;
+  --teal2:#14b8a6;
+  --amber:#f59e0b;
+  --amber2:#fbbf24;
+  --paper:#f8fafc;
+  --line:#e2e8f0;
+  --gray:#64748b;
+  --ok:#16a34a;
+  --bad:#dc2626;
+}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:"Trebuchet MS","Segoe UI",Verdana,sans-serif;
+  background:var(--paper);color:var(--ink);
+  display:flex;flex-direction:column;
+}
+
+/* ===== HEADER ===== */
+header{
+  background:linear-gradient(100deg,var(--ink) 0%,var(--ink2) 60%,var(--teal) 100%);
+  color:#fff;padding:10px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 3px 14px rgba(15,23,42,.35);z-index:50;
+}
+header .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+header .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.3)}
+header .brand small{font-weight:500;opacity:.7;font-size:.75rem;display:block;line-height:1}
+header .tools{display:flex;gap:8px}
+header .tools button{
+  background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);
+  padding:8px 14px;border-radius:10px;font-weight:700;font-size:.85rem;cursor:pointer;
+  transition:.2s;
+}
+header .tools button:hover{background:var(--teal);border-color:var(--teal2);transform:translateY(-2px)}
+
+/* ===== PROGRESS ===== */
+.progress{height:4px;background:#e2e8f0}
+.progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--amber));transition:width .45s ease}
+
+/* ===== SAHNA ===== */
+#stage{flex:1;position:relative;overflow:hidden}
+
+.page{
+  position:absolute;inset:0;overflow-y:auto;
+  padding:34px 42px 90px;
+  opacity:0;transform:translateY(30px);
+  transition:opacity .45s ease,transform .45s ease;
+  pointer-events:none;
+}
+.page.on{opacity:1;transform:translateY(0);pointer-events:auto}
+.page::-webkit-scrollbar{width:9px}
+.page::-webkit-scrollbar-thumb{background:var(--teal2);border-radius:6px}
+.page::-webkit-scrollbar-track{background:var(--line)}
+
+h2.h{
+  font-size:clamp(1.5rem,3.4vw,2.1rem);
+  color:var(--ink);font-weight:800;
+  display:inline-block;margin-bottom:22px;
+  padding-bottom:8px;border-bottom:4px solid var(--amber);
+  letter-spacing:.3px;
+}
+.lead{color:var(--gray);font-size:1.02rem;line-height:1.65;margin-bottom:20px;max-width:900px}
+.tag{display:inline-block;background:var(--amber);color:var(--ink);
+  padding:5px 14px;border-radius:20px;font-size:.78rem;font-weight:800;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+
+/* ===== COVER ===== */
+.cover{
+  min-height:100%;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;gap:18px;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(13,148,136,.14),transparent 45%),
+    radial-gradient(circle at 85% 80%,rgba(245,158,11,.15),transparent 45%);
+}
+.cover .tag{margin:0}
+.cover h1{
+  font-size:clamp(2.4rem,7vw,4.4rem);font-weight:900;
+  color:var(--ink);letter-spacing:-1px;line-height:1.05;
+}
+.cover h1 span{color:var(--teal)}
+.cover .sub{font-size:1.15rem;color:var(--gray);max-width:620px;line-height:1.6}
+.cover .badge{
+  display:inline-block;background:#fff;border:2px solid var(--line);
+  padding:8px 18px;border-radius:30px;font-weight:700;color:var(--ink2);
+  font-size:.85rem;letter-spacing:1px;
+}
+.creators{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:22px 30px;box-shadow:0 10px 30px rgba(15,23,42,.08);
+  max-width:640px;width:100%;
+}
+.creators .lbl{font-size:.72rem;font-weight:800;letter-spacing:2px;
+  color:var(--teal);text-transform:uppercase;margin-bottom:14px}
+.creators .row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.creators .who{
+  background:linear-gradient(120deg,#ecfdf5,#fef3c7);
+  border:1px solid var(--line);color:var(--ink2);
+  padding:10px 18px;border-radius:30px;font-weight:700;font-size:.9rem;
+}
+.big-btn{
+  background:linear-gradient(120deg,var(--teal),var(--teal2));
+  color:#fff;border:none;padding:15px 40px;border-radius:14px;
+  font-size:1.05rem;font-weight:800;cursor:pointer;
+  box-shadow:0 10px 26px rgba(13,148,136,.4);transition:.25s;letter-spacing:.5px;
+}
+.big-btn:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(13,148,136,.55)}
+
+/* ===== GRIDS / CARDS ===== */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+
+.tile{
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:20px;box-shadow:0 6px 18px rgba(15,23,42,.06);
+  transition:.25s;position:relative;overflow:hidden;
+}
+.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,23,42,.12)}
+.tile .k{font-size:1.8rem;margin-bottom:8px}
+.tile h3{font-size:1.02rem;color:var(--ink);margin-bottom:6px;font-weight:800}
+.tile p{font-size:.9rem;color:var(--gray);line-height:1.55}
+.tile.teal{border-top:4px solid var(--teal)}
+.tile.amber{border-top:4px solid var(--amber)}
+.tile.ink{border-top:4px solid var(--ink)}
+
+/* ===== STEP LIST ===== */
+.steps{display:flex;flex-direction:column;gap:12px;max-width:900px}
+.step{
+  display:flex;gap:14px;align-items:flex-start;background:#fff;
+  border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+  box-shadow:0 4px 14px rgba(15,23,42,.05);
+}
+.step .n{
+  flex:none;width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(120deg,var(--ink),var(--teal));
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:1rem;
+}
+.step .t strong{display:block;color:var(--ink);font-size:.98rem;margin-bottom:3px}
+.step .t span{color:var(--gray);font-size:.88rem;line-height:1.5}
+
+/* ===== COMPARE TABLE ===== */
+.tbl-wrap{overflow-x:auto;border-radius:16px;box-shadow:0 6px 18px rgba(15,23,42,.08)}
+table.cmp{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
+table.cmp th{background:var(--ink);color:#fff;padding:12px;text-align:left;font-size:.86rem}
+table.cmp td{padding:11px 12px;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--ink2)}
+table.cmp tr:nth-child(even) td{background:#f8fafc}
+table.cmp td:first-child{font-weight:700;color:var(--ink)}
+
+/* ===== HIGHLIGHT BOX ===== */
+.hl{
+  background:linear-gradient(120deg,#ecfdf5,#fef3c7);
+  border:1px solid var(--line);border-left:6px solid var(--teal);
+  border-radius:14px;padding:20px 24px;margin-top:18px;
+}
+.hl h3{color:var(--ink);margin-bottom:8px;font-size:1.05rem}
+.hl ul{padding-left:20px}
+.hl li{color:var(--ink2);margin-bottom:5px;font-size:.92rem;line-height:1.5}
+
+/* ===== GAMES ===== */
+.games{display:flex;flex-direction:column;gap:18px}
+.gtabs{display:flex;gap:8px;flex-wrap:wrap}
+.gtabs button{
+  background:#fff;border:2px solid var(--line);color:var(--gray);
+  padding:9px 20px;border-radius:24px;font-weight:800;font-size:.85rem;cursor:pointer;transition:.2s;
+}
+.gtabs button.on, .gtabs button:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.gpanel{display:none}
+.gpanel.on{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.hint{color:var(--gray);font-size:.9rem;margin-bottom:14px}
+
+/* ===== GAME 1: MEMORY MATCH ===== */
+.mem-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:640px;
+}
+.mem-card{
+  aspect-ratio:1/1;background:linear-gradient(135deg,var(--ink),var(--ink2));
+  border-radius:12px;cursor:pointer;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:800;font-size:1.5rem;user-select:none;
+  transition:transform .3s,background .3s;
+  box-shadow:0 4px 12px rgba(15,23,42,.2);
+}
+.mem-card::after{content:"❓";font-size:1.4rem;opacity:.9}
+.mem-card.flipped{background:#fff;color:var(--ink);border:2px solid var(--teal);box-shadow:0 6px 18px rgba(13,148,136,.25)}
+.mem-card.flipped::after{display:none}
+.mem-card.matched{background:linear-gradient(135deg,#dcfce7,#bbf7d0);color:#166534;border:2px solid var(--ok);cursor:default}
+.mem-card.matched::after{display:none}
+.mem-card span{padding:8px;text-align:center;font-size:.8rem;line-height:1.3}
+.mem-status{margin-top:14px;font-weight:800;color:var(--teal)}
+.mem-status.win{color:var(--ok)}
+
+/* ===== GAME 2: QUIZ ===== */
+.qbox{
+  background:#fff;border:1px solid var(--line);border-radius:16px;
+  padding:20px;box-shadow:0 6px 18px rgba(15,23,42,.06);margin-bottom:14px;
+}
+.qbox h4{color:var(--ink);margin-bottom:12px;font-size:1rem}
+.qopt{
+  display:block;background:#f8fafc;border:2px solid transparent;
+  padding:11px 16px;border-radius:10px;margin-bottom:8px;
+  cursor:pointer;font-size:.9rem;color:var(--ink2);transition:.2s;
+}
+.qopt:hover{border-color:var(--teal2);background:#fff}
+.qopt.sel{border-color:var(--teal);background:#fff}
+.qopt.ok{border-color:var(--ok);background:#dcfce7}
+.qopt.no{border-color:var(--bad);background:#fee2e2}
+.qexpl{display:none;font-size:.83rem;color:var(--gray);font-style:italic;
+  background:#f1f5f9;padding:8px 12px;border-radius:8px;margin-top:6px}
+.qacts{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.btn-teal{background:var(--teal);color:#fff;border:none;padding:12px 26px;
+  border-radius:10px;font-weight:800;cursor:pointer;transition:.2s;font-size:.92rem}
+.btn-teal:hover{background:var(--ink);transform:translateY(-2px)}
+.btn-out{background:#fff;color:var(--teal);border:2px solid var(--teal);
+  padding:10px 24px;border-radius:10px;font-weight:800;cursor:pointer;transition:.2s;font-size:.92rem}
+.btn-out:hover{background:var(--teal);color:#fff}
+.qresult{margin-top:14px;padding:18px;border-radius:14px;background:#fff;
+  border:2px solid var(--amber);font-weight:800;color:var(--ink);text-align:center;font-size:1.02rem}
+
+/* ===== GAME 3: DRAG ORDER ===== */
+.ord-list{list-style:none;display:flex;flex-direction:column;gap:10px;max-width:640px;margin-bottom:14px}
+.ord-item{
+  background:#fff;border:1px solid var(--line);border-left:5px solid var(--teal);
+  padding:13px 16px;border-radius:12px;cursor:grab;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.92rem;color:var(--ink2);box-shadow:0 4px 12px rgba(15,23,42,.06);
+  transition:.2s;
+}
+.ord-item:hover{transform:translateX(4px)}
+.ord-item.drag{opacity:.4}
+.ord-item.right{border-left-color:var(--ok);background:#f0fdf4}
+.ord-item.bad{border-left-color:var(--bad);background:#fef2f2}
+.ord-item .grip{color:var(--gray);font-weight:900}
+.ord-res{margin-top:10px;font-weight:800;color:var(--teal)}
+
+/* ===== REFLECTION ===== */
+.refl{display:flex;flex-direction:column;gap:16px;max-width:900px}
+.refl .q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:0 4px 14px rgba(15,23,42,.05)}
+.refl label{display:block;font-weight:800;color:var(--ink);margin-bottom:10px;font-size:.95rem}
+.refl textarea{
+  width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px;
+  font-family:inherit;font-size:.92rem;resize:vertical;color:var(--ink2);transition:.2s;
+}
+.refl textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(13,148,136,.15)}
+.refl-acts{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ===== FINAL ===== */
+.finale{
+  min-height:100%;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;gap:20px;
+}
+.finale .line{
+  font-size:1.25rem;font-style:italic;color:var(--ink);
+  max-width:780px;line-height:1.7;padding:26px;
+  background:#fff;border-radius:18px;border-left:6px solid var(--teal);
+  border-right:6px solid var(--amber);box-shadow:0 10px 30px rgba(15,23,42,.08);
+}
+.finale .creators{max-width:640px}
+.finale .end{font-weight:900;color:var(--teal);font-size:1.2rem;letter-spacing:.5px}
+
+/* ===== FOOTER NAV ===== */
+footer{
+  background:var(--ink);color:#fff;padding:10px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  box-shadow:0 -3px 14px rgba(15,23,42,.3);
+}
+footer .nav{
+  background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);
+  padding:11px 26px;border-radius:10px;cursor:pointer;font-weight:800;
+  font-size:.92rem;transition:.2s;
+}
+footer .nav:hover{background:var(--teal);border-color:var(--teal2)}
+footer .nav:disabled{opacity:.35;cursor:not-allowed}
+footer .cnt{font-weight:800;letter-spacing:2px;font-size:.9rem;color:var(--amber2)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:720px){
+  .page{padding:20px 16px 80px}
+  .cover h1{font-size:2.2rem}
+  .mem-grid{grid-template-columns:repeat(3,1fr)}
+  header .brand small{display:none}
+  footer .nav{padding:9px 16px;font-size:.82rem}
+}
+@media(max-width:460px){
+  .mem-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="brand">
+    <div class="dot"></div>
+    <div>
+      AGAR MEN ...
+      <small>Kelajak loyihasi · 10-sinf</small>
+    </div>
+  </div>
+  <div class="tools">
+    <button id="tHome" title="Bosh sahifa">Bosh</button>
+    <button id="tGames" title="O'yinlar">O'yinlar</button>
+    <button id="tFull" title="To'liq ekran">To'liq ekran</button>
+  </div>
+</header>
+<div class="progress"><i id="prog"></i></div>
+
+<!-- ===== SAHNA ===== -->
+<div id="stage">
+
+  <!-- 1. COVER -->
+  <section class="page on" data-p="1">
+    <div class="cover">
+      <span class="tag">10-sinf · Loyiha ishi</span>
+      <h1>Agar men <span>...</span></h1>
+      <p class="sub">
+        Tasavvur qiling: sizda mahalla yoki davlat boshqaruvida haqiqiy vakolat bor.
+        Qanday muammoga qo'l urar edingiz va nega aynan shu muammo?
+      </p>
+      <span class="badge">TARBIYA · DAVLAT VA HUQUQ</span>
+      <div class="creators">
+        <div class="lbl">Mualliflar</div>
+        <div class="row">
+          <span class="who">Temur Xamidov</span>
+          <span class="who">Saidov Sardor</span>
+          <span class="who">Hayitqulov Jaloliddin</span>
+        </div>
+      </div>
+      <button class="big-btn" id="startBtn">Sayohatni boshlash →</button>
+    </div>
+  </section>
+
+  <!-- 2. MUAMMO TANLOVI -->
+  <section class="page" data-p="2">
+    <span class="tag">Qadam 1</span>
+    <h2 class="h">Qaysi muammodan boshlaymiz?</h2>
+    <p class="lead">
+      Har bir mahallada bir nechta og'riqli nuqta bor. Loyihada biz bitta muammoni chuqur o'rganamiz —
+      chunki sayoz hamma narsani qamrab olish emas, bitta ishonchli yechim muhimroq.
+    </p>
+    <div class="g3">
+      <div class="tile teal"><div class="k">🕒</div><h3>Bo'sh vaqt</h3><p>Yoshlar bo'sh vaqtini foydali narsaga sarflayaptimi?</p></div>
+      <div class="tile teal"><div class="k">🌱</div><h3>Ekologiya</h3><p>Hudud tozaligi va yashillikka munosabat.</p></div>
+      <div class="tile teal"><div class="k">📖</div><h3>Huquqiy bilim</h3><p>O'z huquqini bilmaydigan fuqaro himoyasiz.</p></div>
+      <div class="tile amber"><div class="k">♿</div><h3>Qulaylik</h3><p>Imkoniyati cheklanganlar uchun sharoit.</p></div>
+      <div class="tile amber"><div class="k">🏛️</div><h3>Jamoat mulki</h3><p>Umumiy narsalarga ehtiyotkor munosabat.</p></div>
+      <div class="tile amber"><div class="k">🙋</div><h3>Yoshlar ovozi</h3><p>Yoshlar qarorlarda qatnashyaptimi?</p></div>
+    </div>
+    <div class="hl">
+      <h3>🎯 Bizning tanlovimiz</h3>
+      <p style="color:var(--ink2);line-height:1.6">
+        <b>Yoshlarning bo'sh vaqtini mazmunli tashkil etish.</b>
+        Sababi: bu muammo boshqa ko'p muammolarning ildizi — yoshlar band bo'lsa,
+        huquqbuzarlik ham, ekologiya ham, jamoat mulki ham yaxshilanadi.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. ROL VA VAKOLAT -->
+  <section class="page" data-p="3">
+    <span class="tag">Qadam 2</span>
+    <h2 class="h">Rol tanlandi: Mahalla yoshlar yetakchisi</h2>
+    <p class="lead">
+      Nega aynan shu rol? Chunki bu lavozim yoshlarga eng yaqin, lekin vakolati ham real —
+      mahalla raisi bilan birga ishlash, tashabbuslarni qo'llab-quvvatlash imkoniyati bor.
+    </p>
+    <div class="g2">
+      <div class="tile ink">
+        <div class="k">🧑‍🤝‍🧑</div>
+        <h3>Vakolatlarim</h3>
+        <p>Yoshlar yig'ilishlarini chaqirish, tashabbuslarni mahalla raisiga taklif qilish,
+           tadbirlarni rejalashtirish, muammolarni o'rganish.</p>
+      </div>
+      <div class="tile ink">
+        <div class="k">⚠️</div>
+        <h3>Cheklovlar</h3>
+        <p>Byudjetni o'zim tasdiqlay olmayman, qonun chiqara olmayman, jazo qo'llay olmayman.
+           Har qanday qaror mahalla kengashi va qonun doirasida bo'lishi shart.</p>
+      </div>
+      <div class="tile teal">
+        <div class="k">🤝</div>
+        <h3>Kim bilan ishlayman</h3>
+        <p>Mahalla raisi, faollar, maktab, ichki ishlar profilaktikasi, yoshlar ittifoqi
+           va homiylar bilan hamkorlik.</p>
+      </div>
+      <div class="tile amber">
+        <div class="k">📌</div>
+        <h3>Nima uchun muhim</h3>
+        <p>Yoshlar yetakchisi — davlat va yoshlar o'rtasidagi ko'prik.
+           Uning tashabbusi pastdan yuqoriga qarab o'zgarish boshlaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TA'SIR VA DALIL -->
+  <section class="page" data-p="4">
+    <span class="tag">Qadam 3</span>
+    <h2 class="h">Muammo kimga tegadi va dalil qayerdan olinadi?</h2>
+    <div class="g2">
+      <div class="tile teal">
+        <div class="k">👥</div>
+        <h3>Kimga ta'sir qiladi</h3>
+        <p>Yoshlarning o'ziga, ota-onalarga, mahallaga, maktabga, davlatga — ya'ni
+           butun jamiyatga. Bitta yoshning yo'qolishi — butun bir avlodning yo'qolishi.</p>
+      </div>
+      <div class="tile amber">
+        <div class="k">📉</div>
+        <h3>Oqibatlari</h3>
+        <p>Bo'sh vaqt — yomon odatlar, huquqbuzarlik, dangasalik va ishonchsizlikning
+           boshlanishi. Bu zanjir butun mahalla muhitini buzadi.</p>
+      </div>
+    </div>
+    <h3 style="margin:22px 0 12px;color:var(--ink)">🔎 Dalillarni qanday yig'amiz?</h3>
+    <div class="g3">
+      <div class="tile"><div class="k">👀</div><h3>Kuzatuv</h3><p>Mahallada yoshlar kechqurun nima qiladi?</p></div>
+      <div class="tile"><div class="k">📝</div><h3>So'rovnoma</h3><p>Yoshlardan 5 savoldan iborat anonim so'rov.</p></div>
+      <div class="tile"><div class="k">🎙️</div><h3>Intervyu</h3><p>Mahalla raisi va o'qituvchilar bilan suhbat.</p></div>
+      <div class="tile"><div class="k">🌐</div><h3>Rasmiy manba</h3><p>lex.uz, stat.uz, hokimlik sayti.</p></div>
+    </div>
+    <p class="hint" style="margin-top:14px">
+      ⚠️ Raqamlar va qonun moddalari PDF manbada mavjud bo'lsa kiritiladi; bu yerda faqat
+      ishonchli manbalar ko'rsatilgan.
+    </p>
+  </section>
+
+  <!-- 5. HUQUQIY TAHLLIL + YECHIMLAR -->
+  <section class="page" data-p="5">
+    <span class="tag">Qadam 4</span>
+    <h2 class="h">Huquqiy asos va uchta yechim</h2>
+    <p class="lead">
+      Har bir yechim qonun doirasida bo'lishi shart. Quyidagi uchta yo'l — bizning
+      takliflarimiz. Ular huquqiy jihatdan ham, amaliy jihatdan ham tekshiriladi.
+    </p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="n">A</div>
+        <div class="t">
+          <strong>Yoshlar klubi (bepul)</strong>
+          <span>Mahalla binosida sport va IT burchagi ochish. Qonuniy: mahalla o'z binosidan
+                foydalanishi mumkin. Xarajat past, natija tez.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">B</div>
+        <div class="t">
+          <strong>Huquqiy savodxonlik darslari</strong>
+          <span>Oyda ikki marta huquqshunos va o'qituvchi bilan ochiq suhbat. Arzon,
+                lekin yoshlarni jalb qilish qiyin.</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">C</div>
+        <div class="t">
+          <strong>Kichik grant tanlovi</strong>
+          <span>Yoshlar o'z loyihasini taklif qiladi, eng yaxshilari mahalla homiylari
+                tomonidan qo'llab-quvvatlanadi. Raqobat bor, lekin hamma qatnasha olmaydi.</span>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:24px 0 12px;color:var(--ink)">⚖️ Taqqoslash</h3>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>Mezon</th><th>A — Klub</th><th>B — Darslar</th><th>C — Grant</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Qonuniylik</td><td>Yuqori</td><td>Yuqori</td><td>Yuqori</td></tr>
+          <tr><td>Xarajat</td><td>O'rtacha</td><td>Past</td><td>O'rtacha</td></tr>
+          <tr><td>Natija tezligi</td><td>Tez</td><td>Sekin</td><td>O'rtacha</td></tr>
+          <tr><td>Qamrov</td><td>Barcha yoshlar</td><td>Barcha yoshlar</td><td>Faqat faollar</td></tr>
+          <tr><td>Barqarorlik</td><td>Yuqori</td><td>O'rtacha</td><td>Past</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 6. TANLOV VA REJA -->
+  <section class="page" data-p="6">
+    <span class="tag">Qadam 5</span>
+    <h2 class="h">Tanlov: A + B birgalikda</h2>
+    <p class="lead">
+      Nega ikkitasi? Klub yoshlarni jalb qiladi, darslar esa ularning ongini o'zgartiradi.
+      Biri tanani, ikkinchisi fikrni tarbiyalaydi.
+    </p>
+    <div class="hl">
+      <h3>✅ Kutiladigan natija</h3>
+      <ul>
+        <li>Mahallada yoshlar uchun doimiy joy paydo bo'ladi.</li>
+        <li>Huquqiy savodxonlik oshadi — kamroq muammo, ko'proq ishonch.</li>
+        <li>Yoshlar o'z tashabbuslarini taklif qilishga o'rganadi.</li>
+        <li>Mahalla raisi bilan yoshlar o'rtasida muloqot yo'lga qo'yiladi.</li>
+      </ul>
+    </div>
+
+    <h3 style="margin:24px 0 12px;color:var(--ink)">🗓️ Harakat rejasi</h3>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>Vazifa</th><th>Mas'ul</th><th>Muddat</th><th>Resurs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>So'rovnoma o'tkazish</td><td>Temur Xamidov</td><td>1-hafta</td><td>Anketa</td></tr>
+          <tr><td>Mahalla raisi bilan uchrashuv</td><td>Saidov Sardor</td><td>2-hafta</td><td>Xona</td></tr>
+          <tr><td>Klub loyihasini chizish</td><td>Hayitqulov Jaloliddin</td><td>3-hafta</td><td>Kompyuter</td></tr>
+          <tr><td>Huquqiy dars rejasini tuzish</td><td>Jamoa</td><td>4-hafta</td><td>Manbalar</td></tr>
+          <tr><td>Taqdimot va himoya</td><td>Barcha</td><td>5-hafta</td><td>Prezentatsiya</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. O'YINLAR -->
+  <section class="page" data-p="7">
+    <span class="tag">Interaktiv</span>
+    <h2 class="h">🎮 O'yinlar maydoni</h2>
+    <p class="lead">Uchta mini-o'yin: xotira, test va tartiblash. Har biri mavzuni mustahkamlaydi.</p>
+
+    <div class="games">
+      <div class="gtabs">
+        <button class="on" data-g="g1">1. Juftlikni top</button>
+        <button data-g="g2">2. Test</button>
+        <button data-g="g3">3. Bosqichlarni tartibla</button>
+      </div>
+
+      <!-- G1: MEMORY MATCH -->
+      <div class="gpanel on" id="g1">
+        <p class="hint">Kartochkalarni ochib, tushuncha va uning izohini juftlashtiring. 6 juftlik.</p>
+        <div class="mem-grid" id="memGrid"></div>
+        <div class="mem-status" id="memStatus"></div>
+      </div>
+
+      <!-- G2: QUIZ -->
+      <div class="gpanel" id="g2">
+        <p class="hint">5 savol. Har biriga bitta javob. Oxirida natija chiqadi.</p>
+        <div id="quizBox"></div>
+        <div class="qacts">
+          <button class="btn-teal" id="qCheck">Javoblarni tekshirish</button>
+          <button class="btn-out" id="qRetry">Qaytadan</button>
+        </div>
+        <div class="qresult" id="qRes" style="display:none"></div>
+      </div>
+
+      <!-- G3: ORDER -->
+      <div class="gpanel" id="g3">
+        <p class="hint">Loyiha bosqichlarini to'g'ri tartibga keltiring (yuqoridan pastga). Sudrab ko'chirish mumkin.</p>
+        <ul class="ord-list" id="ordList"></ul>
+        <div class="qacts">
+          <button class="btn-teal" id="oCheck">Tekshirish</button>
+          <button class="btn-out" id="oReset">Qaytadan</button>
+        </div>
+        <div class="ord-res" id="ordRes"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. REFLEKSIYA -->
+  <section class="page" data-p="8">
+    <span class="tag">Yakun</span>
+    <h2 class="h">✍️ Shaxsiy xulosa</h2>
+    <p class="lead">
+      Bu savollarga o'zingiz javob yozing. Javoblar faqat shu brauzerda saqlanadi va
+      faylga yuklab olinishi mumkin.
+    </p>
+    <div class="refl" id="reflForm">
+      <div class="q">
+        <label>1. Bu loyihada men eng ko'p qaysi ishni bajardim?</label>
+        <textarea data-k="a1" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <label>2. Qaysi huquqiy qoida yoki cheklovni birinchi marta angladim?</label>
+        <textarea data-k="a2" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <label>3. Jamoada kelishmovchilik bo'ldimi va uni qanday hal qildik?</label>
+        <textarea data-k="a3" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <label>4. To'plangan dalillar fikrimni o'zgartirdimi? Qanday?</label>
+        <textarea data-k="a4" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <label>5. Ertaga men bu muammo bo'yicha bitta aniq qadam tashlay olamanmi?</label>
+        <textarea data-k="a5" rows="3"></textarea>
+      </div>
+      <div class="q">
+        <label>6. Loyihani yana bir marta qilsam, nimani boshqacha qilardim?</label>
+        <textarea data-k="a6" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="refl-acts" style="margin-top:14px">
+      <button class="btn-out" id="rClear">Tozalash</button>
+      <button class="btn-teal" id="rSave">.txt faylga yuklash</button>
+    </div>
+  </section>
+
+  <!-- 9. FINAL -->
+  <section class="page" data-p="9">
+    <div class="finale">
+      <span class="tag">Xulosa</span>
+      <div class="line">
+        "Agar men ..." — bu savol emas, bu <b>sinov</b>. Har kim o'zidan so'rashi kerak:
+        men bugun o'z mahallam uchun nima qildim? Katta lavozimni kutish shart emas —
+        birinchi qadam shu yerda, shu bugundan boshlanadi.
+      </div>
+      <div class="creators">
+        <div class="lbl">Loyiha mualliflari</div>
+        <div class="row">
+          <span class="who">Temur Xamidov</span>
+          <span class="who">Saidov Sardor</span>
+          <span class="who">Hayitqulov Jaloliddin</span>
+        </div>
+      </div>
+      <div class="end">E'tiboringiz uchun rahmat 🌿</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <button class="nav" id="prevBtn">← Orqaga</button>
+  <span class="cnt" id="counter">1 / 9</span>
+  <button class="nav" id="nextBtn">Oldinga →</button>
+</footer>
+
+<script>
+/* ============================================================
+   AGAR MEN ... — Yangi interaktiv loyiha
+   Mualliflar: Temur Xamidov, Saidov Sardor, Hayitqulov Jaloliddin
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ---------- 1. NAVIGATSIYA ---------- */
+  const pages   = [...document.querySelectorAll(".page")];
+  const total   = pages.length;
+  let cur = 0;
+  const prog    = document.getElementById("prog");
+  const counter = document.getElementById("counter");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function go(i){
+    if(i < 0) i = 0;
+    if(i >= total) i = total - 1;
+    pages.forEach((p, idx) => p.classList.toggle("on", idx === i));
+    cur = i;
+    prog.style.width = ((cur + 1) / total * 100) + "%";
+    counter.textContent = `${cur + 1} / ${total}`;
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur === total - 1;
+  }
+  prevBtn.addEventListener("click", () => go(cur - 1));
+  nextBtn.addEventListener("click", () => go(cur + 1));
+  document.addEventListener("keydown", e => {
+    if(e.key === "ArrowRight") go(cur + 1);
+    if(e.key === "ArrowLeft")  go(cur - 1);
+  });
+
+  document.getElementById("startBtn").addEventListener("click", () => go(1));
+  document.getElementById("tHome").addEventListener("click", () => go(0));
+  document.getElementById("tGames").addEventListener("click", () => go(6)); // o'yinlar sahifasi
+  document.getElementById("tFull").addEventListener("click", () => {
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+    else document.exitFullscreen();
+  });
+
+  go(0);
+
+  /* ---------- 2. GAME 1: MEMORY MATCH ---------- */
+  const pairs = [
+    { term:"Burch",       def:"Bajarish shart bo'lgan majburiyat" },
+    { term:"Mas'uliyat",  def:"O'z harakatiga javob berish" },
+    { term:"Vakolat",     def:"Rasmiy berilgan huquq doirasi" },
+    { term:"Qonuniylik",  def:"Qonunga mos bo'lish sharti" },
+    { term:"Tashabbus",   def:"O'zidan taklif qilish harakati" },
+    { term:"Jamoat manfaati", def:"Ko'pchilikka foyda keltiruvchi natija" }
+  ];
+
+  const memGrid   = document.getElementById("memGrid");
+  const memStatus = document.getElementById("memStatus");
+  let memFirst = null, memLock = false, memFound = 0;
+
+  function shuffle(a){ return [...a].sort(() => Math.random() - 0.5); }
+
+  function buildMemory(){
+    memGrid.innerHTML = "";
+    memStatus.textContent = "";
+    memStatus.classList.remove("win");
+    memFirst = null; memLock = false; memFound = 0;
+
+    const cards = [];
+    pairs.forEach((p, i) => {
+      cards.push({ key:i, txt:p.term });
+      cards.push({ key:i, txt:p.def  });
+    });
+    shuffle(cards).forEach(c => {
+      const d = document.createElement("div");
+      d.className = "mem-card";
+      d.dataset.key = c.key;
+      d.dataset.txt = c.txt;
+      d.innerHTML = "<span>" + c.txt + "</span>";
+      d.addEventListener("click", () => flipMem(d));
+      memGrid.appendChild(d);
+    });
+  }
+
+  function flipMem(card){
+    if(memLock || card.classList.contains("flipped") || card.classList.contains("matched")) return;
+    card.classList.add("flipped");
+    if(!memFirst){ memFirst = card; return; }
+    if(memFirst === card) return;
+
+    memLock = true;
+    const same = memFirst.dataset.key === card.dataset.key;
+    if(same){
+      setTimeout(() => {
+        memFirst.classList.add("matched");
+        card.classList.add("matched");
+        memFirst = null; memLock = false;
+        memFound++;
+        memStatus.textContent = `Topilgan juftliklar: ${memFound} / ${pairs.length}`;
+        if(memFound === pairs.length){
+          memStatus.textContent = "🎉 Hammasi topildi! Barakalla!";
+          memStatus.classList.add("win");
+        }
+      }, 420);
+    } else {
+      setTimeout(() => {
+        memFirst.classList.remove("flipped");
+        card.classList.remove("flipped");
+        memFirst = null; memLock = false;
+      }, 750);
+    }
+  }
+  buildMemory();
+
+  /* ---------- 3. GAME 2: QUIZ ---------- */
+  const quiz = [
+    {
+      q:"Mahalla yoshlar yetakchisi byudjetni o'zi tasdiqlay oladimi?",
+      o:["Ha, to'liq huquqi bor","Yo'q, bu kengash vakolati","Faqat rais ruxsati bilan","Faqat saylovdan keyin"],
+      c:1,
+      e:"Byudjetni tasdiqlash mahalla kengashining vakolati, yetakchining emas."
+    },
+    {
+      q:"Muammoni tanlashda eng muhim mezon nima?",
+      o:["Eng qiyqa muammo","Eng ko'pchilikka ta'sir qiladigan va hal qilish mumkin bo'lgan muammo","Do'stlar aytgan muammo","Eng yangi muammo"],
+      c:1,
+      e:"Yechim real bo'lishi uchun muammo aniq va qamrovli bo'lishi kerak."
+    },
+    {
+      q:"Loyihada dalil bo'lib nima xizmat qiladi?",
+      o:["Mish-mish","Faqat shaxsiy fikr","So'rov, kuzatuv, intervyu, rasmiy manba","Internetdagi izohlar"],
+      c:2,
+      e:"Ishonchli dalil — tekshiriladigan manbadan olinadi."
+    },
+    {
+      q:"Yechim 'qonuniy' degani nima?",
+      o:["Ko'pchilik ma'qullagan","Amaldagi qonun va vakolat doirasiga mos","Arzon bo'lgan","Tez amalga oshadigan"],
+      c:1,
+      e:"Qonuniylik — amaldagi huquq normalariga muvofiqlik."
+    },
+    {
+      q:"Loyihaning eng oxirgi bosqichi nima?",
+      o:["Muammoni aniqlash","Dalil to'plash","Himoya va refleksiya","Reja tuzish"],
+      c:2,
+      e:"Loyiha himoya qilinadi va natijalar tahlil qilinadi (refleksiya)."
+    }
+  ];
+
+  const quizBox = document.getElementById("quizBox");
+  const qRes    = document.getElementById("qRes");
+  let picked = new Array(quiz.length).fill(null);
+
+  function buildQuiz(){
+    quizBox.innerHTML = "";
+    picked = new Array(quiz.length).fill(null);
+    qRes.style.display = "none";
+    quiz.forEach((item, qi) => {
+      const box = document.createElement("div");
+      box.className = "qbox";
+      box.innerHTML = `<h4>${qi+1}. ${item.q}</h4>`;
+      item.o.forEach((opt, oi) => {
+        const lab = document.createElement("label");
+        lab.className = "qopt";
+        lab.textContent = opt;
+        lab.addEventListener("click", () => {
+          picked[qi] = oi;
+          box.querySelectorAll(".qopt").forEach(x => x.classList.remove("sel"));
+          lab.classList.add("sel");
+        });
+        box.appendChild(lab);
+      });
+      const ex = document.createElement("div");
+      ex.className = "qexpl";
+      ex.textContent = "💡 " + item.e;
+      box.appendChild(ex);
+      quizBox.appendChild(box);
+    });
+  }
+
+  document.getElementById("qCheck").addEventListener("click", () => {
+    let score = 0;
+    const boxes = quizBox.querySelectorAll(".qbox");
+    quiz.forEach((item, qi) => {
+      const box = boxes[qi];
+      const opts = box.querySelectorAll(".qopt");
+      opts.forEach((o, oi) => {
+        o.classList.remove("ok","no");
+        if(oi === item.c) o.classList.add("ok");
+        else if(picked[qi] === oi) o.classList.add("no");
+      });
+      box.querySelector(".qexpl").style.display = "block";
+      if(picked[qi] === item.c) score++;
+    });
+    const pct = Math.round(score / quiz.length * 100);
+    qRes.style.display = "block";
+    qRes.innerHTML = `Natija: <b>${score} / ${quiz.length}</b> — ${pct}%<br>${
+      pct >= 80 ? "Zo'r! Mavzuni yaxshi o'zlashtirdingiz 🌿"
+      : pct >= 50 ? "Yaxshi, lekin yana takrorlash foydali bo'ladi."
+      : "Mavzuni qayta o'qib chiqing va yana urinib ko'ring."
+    }`;
+  });
+
+  document.getElementById("qRetry").addEventListener("click", buildQuiz);
+  buildQuiz();
+
+  /* ---------- 4. GAME 3: ORDER ---------- */
+  const orderCorrect = [
+    "Muammoni aniqlash",
+    "Dalillarni to'plash",
+    "Huquqiy va ijtimoiy tahlil",
+    "Yechimlarni ishlab chiqish",
+    "Harakat rejasini tuzish",
+    "Himoya va refleksiya"
+  ];
+
+  const ordList = document.getElementById("ordList");
+  const ordRes  = document.getElementById("ordRes");
+
+  function buildOrder(){
+    ordList.innerHTML = "";
+    ordRes.textContent = "";
+    shuffle(orderCorrect).forEach(txt => {
+      const li = document.createElement("li");
+      li.className = "ord-item";
+      li.draggable = true;
+      li.innerHTML = `<span>${txt}</span><span class="grip">☰</span>`;
+      attachDrag(li);
+      ordList.appendChild(li);
+    });
+  }
+
+  let dragging = null;
+  function attachDrag(el){
+    el.addEventListener("dragstart", () => { dragging = el; el.classList.add("drag"); });
+    el.addEventListener("dragend",   () => { el.classList.remove("drag"); dragging = null; });
+    el.addEventListener("dragover",  e => {
+      e.preventDefault();
+      if(!dragging || dragging === el) return;
+      const r = el.getBoundingClientRect();
+      const after = (e.clientY - r.top) > r.height / 2;
+      ordList.insertBefore(dragging, after ? el.nextSibling : el);
+    });
+  }
+
+  document.getElementById("oCheck").addEventListener("click", () => {
+    const items = [...ordList.children];
+    let ok = 0;
+    items.forEach((li, i) => {
+      const txt = li.firstElementChild.textContent;
+      const good = txt === orderCorrect[i];
+      li.classList.toggle("right", good);
+      li.classList.toggle("bad", !good);
+      if(good) ok++;
+    });
+    ordRes.textContent = ok === orderCorrect.length
+      ? "🎉 Tartib to'g'ri! Barakalla."
+      : `${ok} / ${orderCorrect.length} to'g'ri. Xatolar qizil bilan belgilandi.`;
+  });
+
+  document.getElementById("oReset").addEventListener("click", buildOrder);
+  buildOrder();
+
+  /* ---------- 5. GAME TABLAR ---------- */
+  document.querySelectorAll(".gtabs button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll(".gtabs button").forEach(x => x.classList.remove("on"));
+      document.querySelectorAll(".gpanel").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      document.getElementById(b.dataset.g).classList.add("on");
+    });
+  });
+
+  /* ---------- 6. REFLEKSIYA ---------- */
+  const KEY = "agar_men_v2_reflection";
+  const tas = document.querySelectorAll("#reflForm textarea");
+
+  function loadR(){
+    try{
+      const d = JSON.parse(localStorage.getItem(KEY) || "{}");
+      tas.forEach(t => { if(d[t.dataset.k]) t.value = d[t.dataset.k]; });
+    }catch(e){}
+  }
+  function saveR(){
+    const d = {};
+    tas.forEach(t => d[t.dataset.k] = t.value);
+    try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){}
+  }
+  tas.forEach(t => t.addEventListener("input", saveR));
+  loadR();
+
+  document.getElementById("rClear").addEventListener("click", () => {
+    if(!confirm("Barcha javoblarni o'chirasizmi?")) return;
+    tas.forEach(t => t.value = "");
+    localStorage.removeItem(KEY);
+  });
+
+  document.getElementById("rSave").addEventListener("click", () => {
+    const Qs = [
+      "1. Bu loyihada men eng ko'p qaysi ishni bajardim?",
+      "2. Qaysi huquqiy qoida yoki cheklovni birinchi marta angladim?",
+      "3. Jamoada kelishmovchilik bo'ldimi va uni qanday hal qildik?",
+      "4. To'plangan dalillar fikrimni o'zgartirdimi? Qanday?",
+      "5. Ertaga men bu muammo bo'yicha bitta aniq qadam tashlay olamanmi?",
+      "6. Loyihani yana bir marta qilsam, nimani boshqacha qilardim?"
+    ];
+    let out = "AGAR MEN ... — Shaxsiy xulosa\n";
+    out += "Muallif: _______________________\n";
+    out += "Sana: " + new Date().toLocaleDateString() + "\n";
+    out += "=".repeat(52) + "\n\n";
+    tas.forEach((t, i) => {
+      out += Qs[i] + "\n";
+      out += (t.value.trim() || "(javob yozilmagan)") + "\n\n";
+    });
+    const blob = new Blob([out], { type:"text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "agar-men-xulosa.txt";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+});
+</script>
+</body>
+</html>
