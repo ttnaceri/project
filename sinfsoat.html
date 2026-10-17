@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ustoz va Zamonaviy Texnologiyalar</title>
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#000;
+  --ink:#0a0a0a;
+  --ink2:#1a1a1a;
+  --gray:#404040;
+  --gray2:#737373;
+  --gray3:#a3a3a3;
+  --line:#262626;
+  --line2:#e5e5e5;
+  --white:#fff;
+  --off:#fafafa;
+  --off2:#f5f5f5;
+  --ok:#16a34a;
+  --bad:#dc2626;
+}
+html,body{height:100%;overflow:hidden}
+body{
+  font-family:"Georgia","Times New Roman",serif;
+  background:var(--white);color:var(--black);
+  display:flex;flex-direction:column;
+}
+
+/* ===== HEADER ===== */
+header{
+  background:var(--black);color:var(--white);
+  padding:12px 26px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--line);
+  z-index:50;
+}
+header .brand{display:flex;align-items:center;gap:14px;font-weight:700;letter-spacing:1.5px;font-size:.95rem}
+header .brand .sq{width:14px;height:14px;background:var(--white);transform:rotate(45deg)}
+header .brand small{font-weight:400;opacity:.6;font-size:.7rem;letter-spacing:2px;display:block;margin-top:1px}
+header .tools{display:flex;gap:8px}
+header .tools button{
+  background:transparent;color:var(--white);border:1px solid var(--gray);
+  padding:8px 16px;font-family:inherit;font-weight:700;
+  font-size:.78rem;letter-spacing:1.5px;cursor:pointer;transition:.2s;
+  text-transform:uppercase;
+}
+header .tools button:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+
+/* ===== PROGRESS ===== */
+.progress{height:3px;background:var(--line2)}
+.progress > i{display:block;height:100%;width:0;background:var(--black);transition:width .4s ease}
+
+/* ===== SAHNA ===== */
+#stage{flex:1;position:relative;overflow:hidden}
+
+.page{
+  position:absolute;inset:0;overflow-y:auto;
+  padding:40px 50px 90px;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .45s ease,transform .45s ease;
+  pointer-events:none;
+}
+.page.on{opacity:1;transform:translateY(0);pointer-events:auto}
+.page::-webkit-scrollbar{width:8px}
+.page::-webkit-scrollbar-thumb{background:var(--gray)}
+.page::-webkit-scrollbar-track{background:var(--off)}
+
+/* ===== TIPOGRAFIYA ===== */
+.kicker{
+  display:inline-block;font-family:"Arial",sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:4px;
+  color:var(--gray);text-transform:uppercase;margin-bottom:14px;
+}
+.kicker::before{content:"";display:inline-block;width:30px;height:1px;background:var(--black);vertical-align:middle;margin-right:12px}
+
+h2.h{
+  font-size:clamp(1.7rem,3.6vw,2.5rem);color:var(--black);
+  font-weight:400;font-family:"Georgia",serif;
+  margin-bottom:24px;line-height:1.15;letter-spacing:-.5px;
+}
+h2.h b{font-weight:700}
+.lead{
+  color:var(--gray);font-size:1rem;line-height:1.75;
+  max-width:760px;margin-bottom:26px;
+  font-family:"Georgia",serif;
+}
+
+/* ===== COVER ===== */
+.cover{
+  min-height:100%;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  background:var(--black);color:var(--white);
+  padding:60px 40px;
+  position:relative;overflow:hidden;
+}
+.cover::before{
+  content:"";position:absolute;top:0;left:0;right:0;bottom:0;
+  background:
+    repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px),
+    repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,.03) 40px,rgba(255,255,255,.03) 41px);
+  pointer-events:none;
+}
+.cover > *{position:relative;z-index:1}
+.cover .kicker{color:var(--gray3);font-size:.75rem;letter-spacing:6px}
+.cover .kicker::before{background:var(--white)}
+.cover h1{
+  font-family:"Georgia",serif;font-weight:400;
+  font-size:clamp(2.2rem,6.5vw,4.5rem);
+  line-height:1.05;letter-spacing:-2px;
+  margin:20px 0 8px;max-width:900px;
+}
+.cover h1 b{font-weight:700}
+.cover .sub{
+  font-family:"Georgia",serif;font-style:italic;
+  font-size:1.15rem;color:var(--gray3);
+  max-width:600px;line-height:1.6;margin-bottom:36px;
+}
+.cover .line-deco{
+  width:80px;height:1px;background:var(--white);margin:0 auto 36px;
+}
+.cover .creators{
+  border:1px solid var(--gray);padding:22px 32px;
+  max-width:680px;width:100%;
+  background:rgba(255,255,255,.02);
+}
+.cover .creators .lbl{
+  font-family:"Arial",sans-serif;font-size:.7rem;
+  letter-spacing:4px;color:var(--gray3);
+  margin-bottom:16px;text-transform:uppercase;
+}
+.cover .creators .row{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px 32px;
+  text-align:left;
+}
+.cover .creators .who{
+  font-family:"Georgia",serif;font-size:.95rem;
+  color:var(--white);padding:6px 0;
+  border-bottom:1px solid var(--gray);
+  letter-spacing:.5px;
+}
+.cover .creators .who::before{
+  content:"—";color:var(--gray3);margin-right:10px;
+}
+.btn-inv{
+  background:var(--white);color:var(--black);border:none;
+  padding:16px 44px;font-family:"Arial",sans-serif;
+  font-weight:700;font-size:.85rem;letter-spacing:3px;
+  cursor:pointer;transition:.25s;margin-top:36px;
+  text-transform:uppercase;
+}
+.btn-inv:hover{background:transparent;color:var(--white);outline:1px solid var(--white)}
+
+/* ===== TILE ===== */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line2);border:1px solid var(--line2)}
+
+.tile{
+  background:var(--white);padding:26px 24px;transition:.25s;
+  position:relative;
+}
+.tile:hover{background:var(--off)}
+.tile .num{
+  font-family:"Georgia",serif;font-size:2.2rem;
+  color:var(--gray3);line-height:1;font-style:italic;margin-bottom:12px;
+}
+.tile h3{
+  font-family:"Georgia",serif;font-size:1.05rem;
+  color:var(--black);margin-bottom:8px;font-weight:700;letter-spacing:-.2px;
+}
+.tile p{font-family:"Georgia",serif;font-size:.9rem;color:var(--gray);line-height:1.6}
+
+/* ===== SPLIT ===== */
+.split{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--black);margin-top:20px;
+}
+.split .col{padding:32px 28px;background:var(--white)}
+.split .col.dark{background:var(--black);color:var(--white)}
+.split .col h3{
+  font-family:"Arial",sans-serif;font-size:.72rem;
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:14px;color:var(--gray);
+}
+.split .col.dark h3{color:var(--gray3)}
+.split .col p{
+  font-family:"Georgia",serif;font-size:.95rem;line-height:1.7;color:var(--gray);
+}
+.split .col.dark p{color:var(--gray3)}
+
+/* ===== QUOTE ===== */
+.blockquote{
+  border-left:4px solid var(--black);
+  padding:20px 28px;margin:24px 0;
+  background:var(--off);
+  font-family:"Georgia",serif;font-style:italic;
+  font-size:1.15rem;line-height:1.65;color:var(--ink2);
+}
+.blockquote::before{
+  content:'"';font-size:3rem;line-height:.5;
+  display:block;color:var(--gray3);margin-bottom:8px;
+}
+
+/* ===== LIST ===== */
+.deflist{border-top:1px solid var(--black)}
+.deflist .item{
+  display:grid;grid-template-columns:60px 1fr;gap:20px;
+  padding:18px 0;border-bottom:1px solid var(--line2);
+}
+.deflist .item .idx{
+  font-family:"Arial",sans-serif;font-size:.8rem;
+  letter-spacing:2px;color:var(--gray2);padding-top:4px;
+}
+.deflist .item .txt strong{
+  display:block;font-family:"Georgia",serif;
+  font-size:1.02rem;color:var(--black);margin-bottom:6px;
+}
+.deflist .item .txt span{
+  font-family:"Georgia",serif;font-size:.92rem;
+  color:var(--gray);line-height:1.6;
+}
+
+/* ===== TABLE ===== */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--black);margin-top:18px}
+table.cmp{width:100%;border-collapse:collapse;background:var(--white);min-width:540px}
+table.cmp th{
+  background:var(--black);color:var(--white);padding:14px;
+  text-align:left;font-family:"Arial",sans-serif;
+  font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
+}
+table.cmp td{
+  padding:14px;border-bottom:1px solid var(--line2);
+  font-family:"Georgia",serif;font-size:.9rem;color:var(--ink2);
+}
+table.cmp tr:nth-child(even) td{background:var(--off)}
+table.cmp td:first-child{
+  font-weight:700;color:var(--black);
+  font-family:"Arial",sans-serif;font-size:.82rem;letter-spacing:1px;
+}
+
+/* ===== GAMES ===== */
+.games{display:flex;flex-direction:column;gap:20px}
+.gtabs{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid var(--black)}
+.gtabs button{
+  background:transparent;border:none;
+  padding:14px 26px;font-family:"Arial",sans-serif;
+  font-weight:700;font-size:.78rem;letter-spacing:2px;
+  text-transform:uppercase;cursor:pointer;
+  color:var(--gray2);transition:.2s;
+  border-bottom:3px solid transparent;margin-bottom:-1px;
+}
+.gtabs button.on{color:var(--black);border-bottom-color:var(--black)}
+.gtabs button:hover{color:var(--black)}
+.gpanel{display:none;padding-top:20px}
+.gpanel.on{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.hint{font-family:"Georgia",serif;font-style:italic;color:var(--gray);font-size:.92rem;margin-bottom:18px}
+
+/* ===== GAME 1: TRUE/FALSE ===== */
+.tf-card{
+  border:1px solid var(--black);padding:28px;background:var(--white);
+  margin-bottom:16px;
+}
+.tf-card .qtext{
+  font-family:"Georgia",serif;font-size:1.08rem;
+  line-height:1.5;color:var(--black);margin-bottom:20px;
+}
+.tf-card .qnum{
+  font-family:"Arial",sans-serif;font-size:.72rem;
+  letter-spacing:3px;color:var(--gray2);margin-bottom:10px;
+}
+.tf-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf-btn{
+  background:var(--white);border:2px solid var(--black);
+  padding:14px;font-family:"Arial",sans-serif;
+  font-weight:700;font-size:.82rem;letter-spacing:2px;
+  cursor:pointer;transition:.2s;color:var(--black);
+  text-transform:uppercase;
+}
+.tf-btn:hover{background:var(--black);color:var(--white)}
+.tf-btn.chosen{background:var(--black);color:var(--white)}
+.tf-btn.correct{background:var(--ok);border-color:var(--ok);color:#fff}
+.tf-btn.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.tf-expl{
+  margin-top:14px;padding:14px;background:var(--off);
+  font-family:"Georgia",serif;font-size:.9rem;
+  font-style:italic;color:var(--gray);
+  border-left:3px solid var(--black);display:none;
+}
+.tf-result{
+  margin-top:20px;padding:24px;background:var(--black);color:var(--white);
+  text-align:center;font-family:"Georgia",serif;
+  font-size:1.1rem;display:none;
+}
+.tf-result b{font-family:"Arial",sans-serif;font-size:1.5rem;letter-spacing:1px}
+
+/* ===== GAME 2: PAIRING ===== */
+.pair-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  margin-bottom:16px;
+}
+.pair-col{display:flex;flex-direction:column;gap:8px}
+.pair-item{
+  background:var(--white);border:1px solid var(--line2);
+  padding:14px 18px;cursor:pointer;transition:.2s;
+  font-family:"Georgia",serif;font-size:.92rem;color:var(--ink2);
+  border-left:4px solid transparent;
+}
+.pair-item:hover{border-color:var(--black);background:var(--off)}
+.pair-item.sel{border-left-color:var(--black);background:var(--off)}
+.pair-item.done{
+  border-left-color:var(--ok);background:#f0fdf4;
+  color:var(--ok);pointer-events:none;
+  text-decoration:line-through;opacity:.75;
+}
+.pair-res{
+  font-family:"Georgia",serif;font-size:1rem;
+  color:var(--black);margin-top:8px;
+}
+
+/* ===== GAME 3: SORT ===== */
+.sort-list{
+  list-style:none;display:grid;gap:8px;
+  max-width:600px;margin-bottom:18px;
+}
+.sort-item{
+  background:var(--white);border:1px solid var(--line2);
+  padding:14px 18px;cursor:grab;
+  display:flex;justify-content:space-between;
+  align-items:center;font-family:"Georgia",serif;
+  font-size:.92rem;color:var(--ink2);transition:.2s;
+}
+.sort-item:hover{border-color:var(--black)}
+.sort-item.dragging{opacity:.4}
+.sort-item.right{border-left:4px solid var(--ok);background:#f0fdf4}
+.sort-item.wrong{border-left:4px solid var(--bad);background:#fef2f2}
+.sort-item .grip{color:var(--gray3);font-size:1.1rem}
+.sort-res{
+  font-family:"Georgia",serif;font-size:1rem;
+  color:var(--black);margin-top:8px;
+}
+
+/* ===== BUTTONS ===== */
+.btn-blk{
+  background:var(--black);color:var(--white);border:none;
+  padding:14px 30px;font-family:"Arial",sans-serif;
+  font-weight:700;font-size:.8rem;letter-spacing:2px;
+  cursor:pointer;transition:.2s;text-transform:uppercase;
+}
+.btn-blk:hover{background:var(--gray)}
+.btn-out{
+  background:var(--white);color:var(--black);border:2px solid var(--black);
+  padding:12px 28px;font-family:"Arial",sans-serif;
+  font-weight:700;font-size:.8rem;letter-spacing:2px;
+  cursor:pointer;transition:.2s;text-transform:uppercase;
+}
+.btn-out:hover{background:var(--black);color:var(--white)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+/* ===== REFLECTION ===== */
+.refl{display:flex;flex-direction:column;gap:14px;max-width:860px}
+.refl-item{
+  border:1px solid var(--line2);padding:20px;background:var(--white);
+}
+.refl-item label{
+  display:block;font-family:"Georgia",serif;
+  font-weight:700;font-size:.95rem;color:var(--black);
+  margin-bottom:10px;line-height:1.5;
+}
+.refl-item textarea{
+  width:100%;border:1px solid var(--line2);
+  padding:12px;font-family:"Georgia",serif;
+  font-size:.9rem;color:var(--ink2);resize:vertical;
+  background:var(--off);transition:.2s;
+}
+.refl-item textarea:focus{
+  outline:none;border-color:var(--black);background:var(--white);
+}
+
+/* ===== FINAL ===== */
+.finale{
+  min-height:100%;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;
+  background:var(--black);color:var(--white);
+  padding:60px 40px;gap:28px;
+}
+.finale .kicker{color:var(--gray3)}
+.finale .kicker::before{background:var(--white)}
+.finale .line{
+  font-family:"Georgia",serif;font-style:italic;
+  font-size:1.35rem;line-height:1.6;
+  max-width:760px;color:var(--white);
+}
+.finale .line b{font-style:normal;font-weight:700}
+.finale .deco{width:60px;height:1px;background:var(--white)}
+.finale .creators-block{
+  border:1px solid var(--gray);padding:24px 36px;
+  max-width:680px;width:100%;
+}
+.finale .creators-block .lbl{
+  font-family:"Arial",sans-serif;font-size:.7rem;
+  letter-spacing:4px;color:var(--gray3);
+  margin-bottom:16px;text-transform:uppercase;
+}
+.finale .creators-block .row{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px 32px;text-align:left;
+}
+.finale .creators-block .who{
+  font-family:"Georgia",serif;font-size:.95rem;padding:6px 0;
+  border-bottom:1px solid var(--gray);color:var(--white);
+}
+.finale .creators-block .who::before{content:"—";color:var(--gray3);margin-right:10px}
+.finale .end{
+  font-family:"Arial",sans-serif;font-size:.75rem;
+  letter-spacing:4px;text-transform:uppercase;
+  color:var(--gray3);margin-top:12px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--black);color:var(--white);
+  padding:12px 26px;display:flex;
+  justify-content:space-between;align-items:center;
+  border-top:1px solid var(--line);
+}
+footer .nav{
+  background:transparent;color:var(--white);
+  border:1px solid var(--gray);padding:10px 26px;
+  font-family:"Arial",sans-serif;font-weight:700;
+  font-size:.78rem;letter-spacing:2px;
+  cursor:pointer;transition:.2s;text-transform:uppercase;
+}
+footer .nav:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+footer .nav:disabled{opacity:.35;cursor:not-allowed}
+footer .cnt{
+  font-family:"Arial",sans-serif;font-weight:700;
+  font-size:.85rem;letter-spacing:3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .page{padding:22px 18px 80px}
+  .split{grid-template-columns:1fr}
+  .cover .creators .row{grid-template-columns:1fr;gap:8px}
+  .finale .creators-block .row{grid-template-columns:1fr;gap:8px}
+  .pair-wrap{grid-template-columns:1fr}
+  .gtabs button{padding:12px 16px;font-size:.7rem}
+  header .brand small{display:none}
+  header .brand{font-size:.8rem;letter-spacing:1px}
+  header .tools button{padding:6px 10px;font-size:.65rem}
+  footer .nav{padding:8px 14px;font-size:.68rem;letter-spacing:1px}
+  h2.h{font-size:1.5rem}
+  .cover h1{letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="brand">
+    <div class="sq"></div>
+    <div>
+      USTOZ &amp; TEXNOLOGIYA
+      <small>10-SINF · LOYIHA ISHI</small>
+    </div>
+  </div>
+  <div class="tools">
+    <button id="tHome">Bosh</button>
+    <button id="tGames">O'yinlar</button>
+    <button id="tFull">To'liq</button>
+  </div>
+</header>
+<div class="progress"><i id="prog"></i></div>
+
+<!-- ===== SAHNA ===== -->
+<div id="stage">
+
+  <!-- 1. COVER -->
+  <section class="page on" data-p="1">
+    <div class="cover">
+      <span class="kicker">Loyiha ishi</span>
+      <h1>Ustoz va <b>Zamonaviy</b> Texnologiyalar</h1>
+      <div class="line-deco"></div>
+      <p class="sub">An'anaviy bilim va raqamli asr tutashgan nuqtada — ustozning o'rni qanday o'zgarmoqda?</p>
+      <div class="creators">
+        <div class="lbl">Mualliflar</div>
+        <div class="row">
+          <span class="who">Ergashev Husniddin</span>
+          <span class="who">Normingiyev Najotbek</span>
+          <span class="who">Hasanboyev Elbek</span>
+          <span class="who">Abdumajidov Abdulaziz</span>
+        </div>
+      </div>
+      <button class="btn-inv" id="startBtn">Boshlash</button>
+    </div>
+  </section>
+
+  <!-- 2. MUAMMO -->
+  <section class="page" data-p="2">
+    <span class="kicker">01 · Muammo</span>
+    <h2 class="h">Texnologiya <b>ustozni</b> almashtira oladimi?</h2>
+    <p class="lead">
+      Bugun har bir o'quvchining qo'lida internetga ulangan qurilma bor. Sun'iy intellekt
+      javob yozadi, video darslar tayyor, onlayn kurslar cheksiz. Shu sharoitda ustozning
+      vazifasi tugadimi yoki yangi ma'no kasb etdi?
+    </p>
+
+    <div class="blockquote">
+      Texnologiya — bu vosita. Ustoz — bu yo'naltiruvchi. Vosita yo'naltiruvchini almashtira olmaydi,
+      lekin uni kuchaytiradi.
+    </div>
+
+    <div class="split">
+      <div class="col">
+        <h3>Texnologiya beradi</h3>
+        <p>Tezkor ma'lumot, takrorlanmas imkoniyat, individual sur'at, vizual materiallar, cheksiz manbalar.</p>
+      </div>
+      <div class="col dark">
+        <h3>Ustoz beradi</h3>
+        <p>Ma'no, qadriyat, tarbiya, savol berish madaniyati, tanqidiy fikrlash, insoniy munosabat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. USTOZNING YANGI VAZIFALARI -->
+  <section class="page" data-p="3">
+    <span class="kicker">02 · O'zgarish</span>
+    <h2 class="h">Ustozning <b>yangi</b> vazifalari</h2>
+    <p class="lead">
+      Bilim endi faqat ustozning xotirasida emas — u hamma joyda ochiq. Demak ustozning
+      kuchi boshqa joyga ko'chdi: yo'naltirishga, tanlashga, tarbiyaga.
+    </p>
+    <div class="deflist">
+      <div class="item">
+        <div class="idx">01</div>
+        <div class="txt"><strong>Yo'naltiruvchi</strong><span>Ma'lumotlar dengizida to'g'ri manbani tanlashga o'rgatadi.</span></div>
+      </div>
+      <div class="item">
+        <div class="idx">02</div>
+        <div class="txt"><strong>Tanqidiy fikrlash murabbiyi</strong><span>Har bir javobga "nega?" deb so'rashni o'rgatadi.</span></div>
+      </div>
+      <div class="item">
+        <div class="idx">03</div>
+        <div class="txt"><strong>Qadriyat yetakchisi</strong><span>Halollik, hurmat, mas'uliyat — bularni dastur o'rgatmaydi.</span></div>
+      </div>
+      <div class="item">
+        <div class="idx">04</div>
+        <div class="txt"><strong>Texnologiya hamkori</strong><span>Qurilmalarni dars jarayoniga to'g'ri jalb qiladi.</span></div>
+      </div>
+      <div class="item">
+        <div class="idx">05</div>
+        <div class="txt"><strong>Shaxsiy namuna</strong><span>O'z xatti-harakati bilan ko'rsatadi, faqat gapirmaydi.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TEXNOLOGIYALAR -->
+  <section class="page" data-p="4">
+    <span class="kicker">03 · Vositalar</span>
+    <h2 class="h">Darsda <b>foydali</b> texnologiyalar</h2>
+    <p class="lead">
+      Har qanday yangi vosita foydali emas. Faqat o'quvchi fikrlashini kuchaytiradigan,
+      ustoz vaqtini tejaydigan vositalar mazmunli.
+    </p>
+    <div class="g3">
+      <div class="tile"><div class="num">01</div><h3>Interaktiv taxta</h3><p>Murakkab mavzularni vizual ko'rsatish, birgalikda ishlash.</p></div>
+      <div class="tile"><div class="num">02</div><h3>Onlayn testlar</h3><p>Tezkor baholash, o'quvchiga darhol fikr-mulohaza.</p></div>
+      <div class="tile"><div class="num">03</div><h3>Video darslar</h3><p>Mavzuni uyda takrorlash imkoniyati.</p></div>
+      <div class="tile"><div class="num">04</div><h3>Elektron kutubxona</h3><p>Kitob va manbalarga cheksiz kirish.</p></div>
+      <div class="tile"><div class="num">05</div><h3>Sun'iy intellekt</h3><p>Yordamchi savol-javob, lekin o'rnini bosuvchi emas.</p></div>
+      <div class="tile"><div class="num">06</div><h3>Loyiha platformalari</h3><p>Guruh bo'lib ishlash, natijani baham ko'rish.</p></div>
+    </div>
+  </section>
+
+  <!-- 5. XATARLAR -->
+  <section class="page" data-p="5">
+    <span class="kicker">04 · Ogohlantirish</span>
+    <h2 class="h">Texnologiya <b>noto'g'ri</b> ishlatilsa</h2>
+    <p class="lead">
+      Har bir vosita — ikki tomonlama. Foyda bilan birga xatar ham bor. Buni ustoz ham,
+      o'quvchi ham, ota-ona ham bilishi kerak.
+    </p>
+    <div class="g2">
+      <div class="tile"><div class="num">!</div><h3>Diqqat tarqashi</h3><p>Telefon darsga xalaqit beradi — fokus yo'qoladi.</p></div>
+      <div class="tile"><div class="num">!</div><h3>Yuzaki o'rganish</h3><p>Javobni ko'chirish oson, lekin tushunish yo'q.</p></div>
+      <div class="tile"><div class="num">!</div><h3>Jonli muloqot kamayishi</h3><p>Ekran ortida insoniy aloqa yo'qoladi.</p></div>
+      <div class="tile"><div class="num">!</div><h3>Noto'g'ri ma'lumot</h3><p>Manbani tekshirmaslik xatoga olib keladi.</p></div>
+      <div class="tile"><div class="num">!</div><h3>Bog'liqlik</h3><p>Qurilmasiz ishlash qiyinlashadi.</p></div>
+      <div class="tile"><div class="num">!</div><h3>Tengsizlik</h3><p>Hamma ham bir xil imkoniyatga ega emas.</p></div>
+    </div>
+    <div class="blockquote" style="margin-top:26px">
+      Vosita aybdor emas — undan qanday foydalanish mas'uliyati bizning zimmamizda.
+    </div>
+  </section>
+
+  <!-- 6. TAQQOSLASH -->
+  <section class="page" data-p="6">
+    <span class="kicker">05 · Taqqoslash</span>
+    <h2 class="h">An'anaviy va <b>zamonaviy</b> yondashuv</h2>
+    <p class="lead">Ikkalasi ham kerak. Faqat bittasini tanlash — noto'g'ri. Ularni to'g'ri bog'lash — san'at.</p>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th>Mezon</th><th>An'anaviy usul</th><th>Zamonaviy usul</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Manba</td><td>Darslik, ustoz</td><td>Darslik + internet + video</td></tr>
+          <tr><td>Sur'at</td><td>Butun sinf uchun bir xil</td><td>Har kimga individual</td></tr>
+          <tr><td>Baholash</td><td>Yozma ish, og'zaki savol</td><td>Onlayn test, loyiha, portfel</td></tr>
+          <tr><td>Muloqot</td><td>Yuzma-yuz</td><td>Yuzma-yuz + onlayn</td></tr>
+          <tr><td>Tarbiya</td><td>Ustoz namunasi</td><td>Ustoz namunasi + raqamli madaniyat</td></tr>
+          <tr><td>Ustoz roli</td><td>Bilim beruvchi</td><td>Yo'naltiruvchi, murabbiy</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 7. O'YINLAR -->
+  <section class="page" data-p="7">
+    <span class="kicker">06 · Interaktiv</span>
+    <h2 class="h">O'yinlar <b>maydoni</b></h2>
+    <p class="lead">Uchta mini-o'yin: to'g'ri/noto'g'ri, juftlashtirish va tartiblash. Har biri mavzuni mustahkamlaydi.</p>
+    <div class="games">
+      <div class="gtabs">
+        <button class="on" data-g="g1">1. To'g'ri / Noto'g'ri</button>
+        <button data-g="g2">2. Juftlashtirish</button>
+        <button data-g="g3">3. Tartiblash</button>
+      </div>
+
+      <!-- GAME 1 -->
+      <div class="gpanel on" id="g1">
+        <p class="hint">Har bir gapga javob bering: to'g'ri yoki noto'g'ri.</p>
+        <div id="tfBox"></div>
+        <div class="tf-result" id="tfResult"></div>
+        <div class="btn-row">
+          <button class="btn-out" id="tfReset">Qaytadan</button>
+        </div>
+      </div>
+
+      <!-- GAME 2 -->
+      <div class="gpanel" id="g2">
+        <p class="hint">Chapdagi tushunchani o'ngdagi izohi bilan juftlashtiring.</p>
+        <div class="pair-wrap">
+          <div class="pair-col" id="pairLeft"></div>
+          <div class="pair-col" id="pairRight"></div>
+        </div>
+        <div class="pair-res" id="pairRes"></div>
+        <div class="btn-row">
+          <button class="btn-out" id="pairReset">Qaytadan</button>
+        </div>
+      </div>
+
+      <!-- GAME 3 -->
+      <div class="gpanel" id="g3">
+        <p class="hint">Darsda texnologiyadan foydalanish bosqichlarini to'g'ri tartibga keltiring.</p>
+        <ul class="sort-list" id="sortList"></ul>
+        <div class="sort-res" id="sortRes"></div>
+        <div class="btn-row">
+          <button class="btn-blk" id="sortCheck">Tekshirish</button>
+          <button class="btn-out" id="sortReset">Qaytadan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. AMALIY MASLAHATLAR -->
+  <section class="page" data-p="8">
+    <span class="kicker">07 · Amaliyot</span>
+    <h2 class="h">Amaliy <b>maslahatlar</b></h2>
+    <p class="lead">
+      Nazariya yetarli emas — har bir ustoz va o'quvchi bugundan qo'llashi mumkin bo'lgan
+      oddiy qadamlar.
+    </p>
+    <div class="g2">
+      <div class="tile">
+        <div class="num">01</div>
+        <h3>Ustoz uchun</h3>
+        <p>Har darsda bitta raqamli vositani maqsadli qo'llang. Ko'p vosita emas — bitta to'g'ri vosita.</p>
+      </div>
+      <div class="tile">
+        <div class="num">02</div>
+        <h3>O'quvchi uchun</h3>
+        <p>Har qanday onlayn javobni tekshiring: kim yozgan? qachon? manba bormi?</p>
+      </div>
+      <div class="tile">
+        <div class="num">03</div>
+        <h3>Ota-ona uchun</h3>
+        <p>Farzandingiz ekranda qancha vaqt o'tkazayotganini emas, nima qilayotganini so'rang.</p>
+      </div>
+      <div class="tile">
+        <div class="num">04</div>
+        <h3>Maktab uchun</h3>
+        <p>Ustozlarni raqamli savodxonlikka o'rgating — vosita o'zi ishlamaydi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. REFLEKSIYA -->
+  <section class="page" data-p="9">
+    <span class="kicker">08 · Xulosa</span>
+    <h2 class="h">Shaxsiy <b>mulohaza</b></h2>
+    <p class="lead">
+      Bu savollarga o'zingiz javob yozing. Javoblar brauzerda saqlanadi va faylga yuklab olinadi.
+    </p>
+    <div class="refl" id="reflForm">
+      <div class="refl-item">
+        <label>1. Texnologiya sizning o'qishingizda qanday o'rin tutadi?</label>
+        <textarea data-k="a1" rows="3"></textarea>
+      </div>
+      <div class="refl-item">
+        <label>2. Ustozingiz sizga nima berganki, buni hech qanday dastur bera olmaydi?</label>
+        <textarea data-k="a2" rows="3"></textarea>
+      </div>
+      <div class="refl-item">
+        <label>3. Hozir siz texnologiyadan foydali foydalanayapsizmi yoki vaqtni yo'qotyapsizmi?</label>
+        <textarea data-k="a3" rows="3"></textarea>
+      </div>
+      <div class="refl-item">
+        <label>4. Kelajakda ustoz bo'lsangiz, texnologiyadan qanday foydalanardingiz?</label>
+        <textarea data-k="a4" rows="3"></textarea>
+      </div>
+      <div class="refl-item">
+        <label>5. Bugundan boshlab bitta aniq o'zgarish nima qilasiz?</label>
+        <textarea data-k="a5" rows="3"></textarea>
+      </div>
+    </div>
+    <div class="btn-row" style="margin-top:18px">
+      <button class="btn-out" id="rClear">Tozalash</button>
+      <button class="btn-blk" id="rSave">.txt yuklab olish</button>
+    </div>
+  </section>
+
+  <!-- 10. FINAL -->
+  <section class="page" data-p="10">
+    <div class="finale">
+      <span class="kicker">Yakun</span>
+      <div class="line">
+        Ustoz — bu faqat bilim beruvchi emas. U <b>savol berishni</b> o'rgatadi,
+        <b>to'g'ri yo'lni</b> ko'rsatadi va <b>inson bo'lishni</b> o'rgatadi.
+        Texnologiya kuchayadi — lekin ustozning qadri oshadi, kamaymaydi.
+      </div>
+      <div class="deco"></div>
+      <div class="creators-block">
+        <div class="lbl">Loyiha mualliflari</div>
+        <div class="row">
+          <span class="who">Ergashev Husniddin</span>
+          <span class="who">Normingiyev Najotbek</span>
+          <span class="who">Hasanboyev Elbek</span>
+          <span class="who">Abdumajidov Abdulaziz</span>
+        </div>
+      </div>
+      <div class="end">E'tiboringiz uchun rahmat</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <button class="nav" id="prevBtn">Orqaga</button>
+  <span class="cnt" id="counter">1 / 10</span>
+  <button class="nav" id="nextBtn">Oldinga</button>
+</footer>
+
+<script>
+/* ============================================================
+   USTOZ VA ZAMONAVIY TEXNOLOGIYALAR
+   Mualliflar: Ergashev Husniddin, Normingiyev Najotbek,
+               Hasanboyev Elbek, Abdumajidov Abdulaziz
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ---------- 1. NAVIGATSIYA ---------- */
+  const pages   = [...document.querySelectorAll(".page")];
+  const total   = pages.length;
+  let cur = 0;
+  const prog    = document.getElementById("prog");
+  const counter = document.getElementById("counter");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function go(i){
+    if(i < 0) i = 0;
+    if(i >= total) i = total - 1;
+    pages.forEach((p, idx) => p.classList.toggle("on", idx === i));
+    cur = i;
+    prog.style.width = ((cur + 1) / total * 100) + "%";
+    counter.textContent = `${cur + 1} / ${total}`;
+    prevBtn.disabled = cur === 0;
+    nextBtn.disabled = cur === total - 1;
+  }
+  prevBtn.addEventListener("click", () => go(cur - 1));
+  nextBtn.addEventListener("click", () => go(cur + 1));
+  document.addEventListener("keydown", e => {
+    if(e.key === "ArrowRight") go(cur + 1);
+    if(e.key === "ArrowLeft")  go(cur - 1);
+  });
+
+  document.getElementById("startBtn").addEventListener("click", () => go(1));
+  document.getElementById("tHome").addEventListener("click", () => go(0));
+  document.getElementById("tGames").addEventListener("click", () => go(6));
+  document.getElementById("tFull").addEventListener("click", () => {
+    if(!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+    else document.exitFullscreen();
+  });
+
+  go(0);
+
+  /* ============================================================
+     GAME 1: TO'G'RI / NOTO'G'RI
+     ============================================================ */
+  const tfData = [
+    {
+      q: "Texnologiya ustozni to'liq almashtira oladi.",
+      a: false,
+      e: "Yo'q. Texnologiya vosita, ustoz esa yo'naltiruvchi va tarbiyachi."
+    },
+    {
+      q: "Onlayn testlar ustozning baholash vaqtini tejaydi.",
+      a: true,
+      e: "Ha, avtomatik baholash ustozga ko'proq vaqt qoldiradi."
+    },
+    {
+      q: "Internetdagi har qanday javob ishonchli.",
+      a: false,
+      e: "Yo'q, manbani har doim tekshirish kerak."
+    },
+    {
+      q: "Zamonaviy texnologiya tarbiya berishda ustoz o'rnini bosa oladi.",
+      a: false,
+      e: "Tarbiya — insoniy munosabat natijasi, dastur bera olmaydi."
+    },
+    {
+      q: "Ustoz texnologiyani darsga maqsadli jalb qilsa, natija yaxshilanadi.",
+      a: true,
+      e: "Ha, lekin faqat maqsadli va o'ylangan holda."
+    },
+    {
+      q: "Vosita qanchalik ko'p bo'lsa, dars shunchalik samarali bo'ladi.",
+      a: false,
+      e: "Yo'q, ko'p vosita diqqatni tarqatadi. Bitta to'g'ri vosita yetarli."
+    }
+  ];
+
+  const tfBox    = document.getElementById("tfBox");
+  const tfResult = document.getElementById("tfResult");
+  let tfScore = 0;
+  let tfDone  = 0;
+
+  function buildTF(){
+    tfBox.innerHTML = "";
+    tfResult.style.display = "none";
+    tfScore = 0;
+    tfDone  = 0;
+    tfData.forEach((item, i) => {
+      const card = document.createElement("div");
+      card.className = "tf-card";
+      card.innerHTML = `
+        <div class="qnum">SAVOL ${String(i+1).padStart(2,"0")}</div>
+        <div class="qtext">${item.q}</div>
+        <div class="tf-btns">
+          <button class="tf-btn" data-v="true">To'g'ri</button>
+          <button class="tf-btn" data-v="false">Noto'g'ri</button>
+        </div>
+        <div class="tf-expl">💡 ${item.e}</div>
+      `;
+      const btns = card.querySelectorAll(".tf-btn");
+      btns.forEach(b => {
+        b.addEventListener("click", () => {
+          if(card.dataset.answered) return;
+          card.dataset.answered = "1";
+          const userVal = b.dataset.v === "true";
+          btns.forEach(x => {
+            x.disabled = true;
+            const correct = (x.dataset.v === "true") === item.a;
+            if(correct) x.classList.add("correct");
+          });
+          if(userVal === item.a){
+            b.classList.add("correct");
+            tfScore++;
+          } else {
+            b.classList.add("wrong");
+          }
+          card.querySelector(".tf-expl").style.display = "block";
+          tfDone++;
+          if(tfDone === tfData.length){
+            tfResult.style.display = "block";
+            const pct = Math.round(tfScore / tfData.length * 100);
+            tfResult.innerHTML = `NATIJA: <b>${tfScore} / ${tfData.length}</b> — ${pct}%`;
+          }
+        });
+      });
+      tfBox.appendChild(card);
+    });
+  }
+  document.getElementById("tfReset").addEventListener("click", buildTF);
+  buildTF();
+
+  /* ============================================================
+     GAME 2: JUFTLASHTIRISH
+     ============================================================ */
+  const pairData = [
+    { term:"Ustoz",       def:"Yo'naltiruvchi va tarbiyachi" },
+    { term:"Texnologiya", def:"Vosita va yordamchi" },
+    { term:"Sun'iy intellekt", def:"Yordamchi, lekin o'rinbosar emas" },
+    { term:"Onlayn test", def:"Tezkor baholash vositasi" },
+    { term:"Raqamli madaniyat", def:"Internetdan to'g'ri foydalanish odati" }
+  ];
+
+  const pairLeft  = document.getElementById("pairLeft");
+  const pairRight = document.getElementById("pairRight");
+  const pairRes   = document.getElementById("pairRes");
+  let selL = null, selR = null, matched = 0;
+
+  function shuffle(a){ return [...a].sort(() => Math.random() - 0.5); }
+
+  function buildPair(){
+    pairLeft.innerHTML = "";
+    pairRight.innerHTML = "";
+    pairRes.textContent = "";
+    selL = null; selR = null; matched = 0;
+
+    shuffle(pairData).forEach(p => {
+      const d = document.createElement("div");
+      d.className = "pair-item";
+      d.textContent = p.term;
+      d.dataset.key = p.term;
+      d.addEventListener("click", () => pickLeft(d));
+      pairLeft.appendChild(d);
+    });
+    shuffle(pairData).forEach(p => {
+      const d = document.createElement("div");
+      d.className = "pair-item";
+      d.textContent = p.def;
+      d.dataset.key = p.term;
+      d.addEventListener("click", () => pickRight(d));
+      pairRight.appendChild(d);
+    });
+  }
+
+  function pickLeft(el){
+    if(el.classList.contains("done")) return;
+    pairLeft.querySelectorAll(".pair-item").forEach(x => x.classList.remove("sel"));
+    el.classList.add("sel");
+    selL = el;
+    tryMatch();
+  }
+  function pickRight(el){
+    if(el.classList.contains("done")) return;
+    pairRight.querySelectorAll(".pair-item").forEach(x => x.classList.remove("sel"));
+    el.classList.add("sel");
+    selR = el;
+    tryMatch();
+  }
+  function tryMatch(){
+    if(!selL || !selR) return;
+    if(selL.dataset.key === selR.dataset.key){
+      selL.classList.add("done");
+      selR.classList.add("done");
+      selL.classList.remove("sel");
+      selR.classList.remove("sel");
+      matched++;
+      pairRes.textContent = `Topilgan juftliklar: ${matched} / ${pairData.length}`;
+      if(matched === pairData.length){
+        pairRes.textContent = "🎉 Hammasi topildi! Barakalla.";
+      }
+    } else {
+      const a = selL, b = selR;
+      setTimeout(() => {
+        a.classList.remove("sel");
+        b.classList.remove("sel");
+      }, 350);
+    }
+    selL = null; selR = null;
+  }
+  document.getElementById("pairReset").addEventListener("click", buildPair);
+  buildPair();
+
+  /* ============================================================
+     GAME 3: TARTIBLASH
+     ============================================================ */
+  const sortCorrect = [
+    "Dars maqsadini aniqlash",
+    "Tegishli texnologiyani tanlash",
+    "Vositaning imkoniyatlarini tekshirish",
+    "Darsda qo'llash va kuzatish",
+    "Natijani baholash",
+    "Xulosa va takomillashtirish"
+  ];
+
+  const sortList = document.getElementById("sortList");
+  const sortRes  = document.getElementById("sortRes");
+
+  function buildSort(){
+    sortList.innerHTML = "";
+    sortRes.textContent = "";
+    shuffle(sortCorrect).forEach(t => {
+      const li = document.createElement("li");
+      li.className = "sort-item";
+      li.draggable = true;
+      li.innerHTML = `<span>${t}</span><span class="grip">☰</span>`;
+      attachDrag(li);
+      sortList.appendChild(li);
+    });
+  }
+
+  let dragging = null;
+  function attachDrag(el){
+    el.addEventListener("dragstart", () => { dragging = el; el.classList.add("dragging"); });
+    el.addEventListener("dragend",   () => { el.classList.remove("dragging"); dragging = null; });
+    el.addEventListener("dragover",  e => {
+      e.preventDefault();
+      if(!dragging || dragging === el) return;
+      const r = el.getBoundingClientRect();
+      const after = (e.clientY - r.top) > r.height / 2;
+      sortList.insertBefore(dragging, after ? el.nextSibling : el);
+    });
+  }
+
+  document.getElementById("sortCheck").addEventListener("click", () => {
+    const items = [...sortList.children];
+    let ok = 0;
+    items.forEach((li, i) => {
+      const txt = li.firstElementChild.textContent;
+      const good = txt === sortCorrect[i];
+      li.classList.toggle("right", good);
+      li.classList.toggle("wrong", !good);
+      if(good) ok++;
+    });
+    sortRes.textContent = ok === sortCorrect.length
+      ? "🎉 Tartib to'g'ri! Barakalla."
+      : `${ok} / ${sortCorrect.length} to'g'ri. Xatolar qizil bilan belgilandi.`;
+  });
+  document.getElementById("sortReset").addEventListener("click", buildSort);
+  buildSort();
+
+  /* ---------- GAME TABLAR ---------- */
+  document.querySelectorAll(".gtabs button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll(".gtabs button").forEach(x => x.classList.remove("on"));
+      document.querySelectorAll(".gpanel").forEach(x => x.classList.remove("on"));
+      b.classList.add("on");
+      document.getElementById(b.dataset.g).classList.add("on");
+    });
+  });
+
+  /* ============================================================
+     REFLEKSIYA
+     ============================================================ */
+  const KEY = "ustoz_texno_reflection";
+  const tas = document.querySelectorAll("#reflForm textarea");
+
+  function loadR(){
+    try{
+      const d = JSON.parse(localStorage.getItem(KEY) || "{}");
+      tas.forEach(t => { if(d[t.dataset.k]) t.value = d[t.dataset.k]; });
+    }catch(e){}
+  }
+  function saveR(){
+    const d = {};
+    tas.forEach(t => d[t.dataset.k] = t.value);
+    try{ localStorage.setItem(KEY, JSON.stringify(d)); }catch(e){}
+  }
+  tas.forEach(t => t.addEventListener("input", saveR));
+  loadR();
+
+  document.getElementById("rClear").addEventListener("click", () => {
+    if(!confirm("Barcha javoblarni o'chirasizmi?")) return;
+    tas.forEach(t => t.value = "");
+    localStorage.removeItem(KEY);
+  });
+
+  document.getElementById("rSave").addEventListener("click", () => {
+    const Qs = [
+      "1. Texnologiya sizning o'qishingizda qanday o'rin tutadi?",
+      "2. Ustozingiz sizga nima berganki, buni hech qanday dastur bera olmaydi?",
+      "3. Hozir siz texnologiyadan foydali foydalanayapsizmi yoki vaqtni yo'qotyapsizmi?",
+      "4. Kelajakda ustoz bo'lsangiz, texnologiyadan qanday foydalanardingiz?",
+      "5. Bugundan boshlab bitta aniq o'zgarish nima qilasiz?"
+    ];
+    let out = "USTOZ VA ZAMONAVIY TEXNOLOGIYALAR — Shaxsiy mulohaza\n";
+    out += "Muallif: _______________________\n";
+    out += "Sana: " + new Date().toLocaleDateString() + "\n";
+    out += "=".repeat(52) + "\n\n";
+    tas.forEach((t, i) => {
+      out += Qs[i] + "\n";
+      out += (t.value.trim() || "(javob yozilmagan)") + "\n\n";
+    });
+    const blob = new Blob([out], { type:"text/plain;charset=utf-8" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "ustoz-texnologiya-xulosa.txt";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+});
+</script>
+</body>
+</html>
